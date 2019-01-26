@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -387,7 +387,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684704744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.8694979, y: -1.4109774, z: -1.6125126}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -539,7 +539,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4835815621768737854}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f78acbc954afb474ea1a6a74ef6e5baa, type: 3}
   m_Name: 
@@ -551,25 +551,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4835815621768737854, guid: 80cea960ec7dc2444af34acc924432c4,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 5891512219750651492, guid: 80cea960ec7dc2444af34acc924432c4,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 13
-      objectReference: {fileID: 0}
     - target: {fileID: 5891512219750651492, guid: 80cea960ec7dc2444af34acc924432c4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.4109774
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5891512219750651492, guid: 80cea960ec7dc2444af34acc924432c4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.6125126
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5891512219750651492, guid: 80cea960ec7dc2444af34acc924432c4,
         type: 3}
@@ -611,5 +601,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5891512219750651492, guid: 80cea960ec7dc2444af34acc924432c4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835815621768737854, guid: 80cea960ec7dc2444af34acc924432c4,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5152610560396058894, guid: 80cea960ec7dc2444af34acc924432c4,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5152610560396058894, guid: 80cea960ec7dc2444af34acc924432c4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 80cea960ec7dc2444af34acc924432c4, type: 3}
