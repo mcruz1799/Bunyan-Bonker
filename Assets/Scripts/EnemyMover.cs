@@ -47,4 +47,16 @@ public class EnemyMover : MonoBehaviour
             moving = false;
         }
     }
+
+
+    //triggered by animal script when they encounter an enemy
+    public void AnimalDelay(float f){
+        AnimalFight(f);
+    }
+
+    IEnumerator AnimalFight(float f){
+        moving = false;
+        yield return new WaitForSeconds(f);
+        moving = true;
+    }
 }
