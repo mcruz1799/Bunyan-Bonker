@@ -14,7 +14,10 @@ public class GameManager : MonoBehaviour
     private static int lives = 6;
     private Text levelText;
     private Text instructionalText; //for tutorial
+    public string instruction1 = "Press and hold the spacebar to wiggle!";
+    public string instruction2 = "The Bunyans are coming! Protect you and your furry friends!";
     private int level = -1; //start menu as -1 tutorial as 0, etc.
+    private bool learning = true; 
 
     private void Awake()
     {
@@ -47,13 +50,17 @@ public class GameManager : MonoBehaviour
     void Update()
     {   
         if (level == 0){ //tutorial
-            bool learning = true;
-            if (learning){
+            instructionalText = GameObject.Find("InstructionalText").GetComponent<Text>();
+            instructionalText.gameObject.SetActive(true);
+            while (learning)
+            {
+                instructionalText.text = instruction1;
                 if (Mathf.Abs(wigglyTree.Angle) < 45.0f){
                     learning = false;
                 }
             }
-            else enemy.SetActive(true); 
+            instructionalText.text = instruction2;
+            enemy.SetActive(true); 
         }
     }
 
@@ -67,7 +74,8 @@ public class GameManager : MonoBehaviour
         checkGameOver();
     }
     void OnLevelWasLoaded(int index)
-    {
+    {   
+        InitLevel(); 
         level++;
     }
     void InitLevel()
@@ -90,42 +98,8 @@ public class GameManager : MonoBehaviour
             #endif
         }
     }
-<<<<<<< HEAD
     void GameOver()
     {
         levelText.text = "The Bunyans chopped you down!";
-=======
-
-    void GameOver()
-    {
-        levelText.text = "The Bunyans chopped you down!";
-    }
-
-    //Adds Animals representing the Lives.
-    void addLives()
-    {
-        for (int i = 0; i < lives; i++)
-        {
-            //TODO: Replace with random selection from animals.
-            Instantiate(Resources.Load("256px"), new Vector3(Random.Range(-4, 4), 2, 0),transform.rotation);
-        }
-    }
-
-    void removeAnimal()
-    {
-        GameObject[] Animals;
-        Animals = GameObject.FindGameObjectsWithTag("Animal");
-
-        if (Animals.Length == 0)
-        {
-            Debug.Log("All the animals have already left. :(");
-        } else
-        {
-            int index = Random.Range(0, Animals.Length);
-            GameObject animal = Animals[index];
-            Destroy(animal);
-        }
-
->>>>>>> 181fcae1cfa5efd3b10ad2086a1a94085e08b7c8
     }
 }
