@@ -7,6 +7,7 @@ TagManager:
   - Floor
   - Enemy
   - Border
+  - Animal
   layers:
   - Default
   - TransparentFX
