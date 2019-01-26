@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     private Text instructionalText; //for tutorial
     public string instruction1 = "Press and hold the spacebar to wiggle!";
     public string instruction2 = "The Bunyans are coming! Protect you and your furry friends!";
-    private int level = -1; //start menu as -1 tutorial as 0, etc.
+    private int level = 0; //start menu as -1 tutorial as 0, etc.
     private bool learning = true; 
 
     private void Awake()
@@ -43,23 +43,26 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        addLives();
+        
     }
 
     // Update is called once per frame
     void Update()
     {   
-        if (level == 0 && learning)
-        { //tutorial
-            instructionalText = GameObject.Find("InstructionalText").GetComponent<Text>();
-            instructionalText.text = instruction1;
-            if (Mathf.Abs(wigglyTree.Angle) < 45.0f) 
+        if (level == 1)
+        {
+            if (learning)
             {
-                learning = false;
-                instructionalText.text = instruction2;
-                enemy.SetActive(true);
+                instructionalText = GameObject.Find("InstructionalText").GetComponent<Text>();
+                instructionalText.text = instruction1;
+                if (Mathf.Abs(wigglyTree.Angle) < 45.0f) 
+                {
+                    learning = false;
+                    instructionalText.text = instruction2;
+                    enemy.SetActive(true);
+                }
             }
-             
+            if (enemy == null) SceneManager.LoadScene(level+1);
         }
     }
 
@@ -76,6 +79,7 @@ public class GameManager : MonoBehaviour
     {   
         InitLevel(); 
         level++;
+        if (level == 2 || level == 3) addLives();
     }
     void InitLevel()
     {
@@ -104,13 +108,6 @@ public class GameManager : MonoBehaviour
             #endif
         }
     }
-<<<<<<< HEAD
-    void GameOver()
-    {
-        levelText.text = "The Bunyans chopped you down!";
-    }
-=======
->>>>>>> 85bf66f2855c332355103d2fc4c3f0c63f374017
 
     //Adds Animals representing the Lives.
     void addLives()
