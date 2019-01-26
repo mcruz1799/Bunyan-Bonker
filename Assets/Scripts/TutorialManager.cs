@@ -5,6 +5,7 @@ using UnityEngine;
 public class TutorialManager : MonoBehaviour
 {   
     public GameObject enemy;
+    public GameController gameController;
     private bool learning = true;
     public float learnTime = 20.0f;
 
