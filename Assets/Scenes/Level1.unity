@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -551,10 +551,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4835815621768737854, guid: 80cea960ec7dc2444af34acc924432c4,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 5891512219750651492, guid: 80cea960ec7dc2444af34acc924432c4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.8694979
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5891512219750651492, guid: 80cea960ec7dc2444af34acc924432c4,
         type: 3}
@@ -605,11 +610,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4835815621768737854, guid: 80cea960ec7dc2444af34acc924432c4,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80cea960ec7dc2444af34acc924432c4, type: 3}
