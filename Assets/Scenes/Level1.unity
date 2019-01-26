@@ -471,7 +471,7 @@ MonoBehaviour:
   rightSpawnTransform: {fileID: 2121881296}
   spawnProbability: 2
   failMax: 10
-  spawnDelay: 1
+  spawnDelay: 2
   pauseDelay: 3
 --- !u!1 &2121881295
 GameObject:
