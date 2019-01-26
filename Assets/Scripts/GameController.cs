@@ -22,26 +22,6 @@ public interface ITree {
   bool UpgradeSize();
 }
 
-public class WigglyTree : ITree {
-  private GameController gameController;
-
-  public float Speed => gameController.Speed;
-
-  public float Angle => gameController.Angle;
-
-  public float Power => gameController.Power;
-
-  public float Weight => throw new System.NotImplementedException();
-
-  public bool UpgradePower() {
-    throw new System.NotImplementedException();
-  }
-
-  public bool UpgradeSize() {
-    throw new System.NotImplementedException();
-  }
-}
-
 public class GameController : MonoBehaviour {
 #pragma warning disable 0649
   [SerializeField] private TreeController treeController;
@@ -52,7 +32,7 @@ public class GameController : MonoBehaviour {
   public float Power { get; private set; }
 
   //public float MaxWeight { get; }
-  //public float Weight { get; private set; } = 100f;
+  public float Weight { get; private set; } = 100f;
   public float Speed { get { return treeController.Speed; } }
 
   public float Angle { get { return treeController.Angle; } }
@@ -61,24 +41,6 @@ public class GameController : MonoBehaviour {
   private float pullCooldownTime = 2f;
 
   private int xVelocityDirection = 0;
-
-  //public bool UpgradePower() {
-  //  if (Power == MaxPower) {
-  //    return false;
-  //  }
-  //  Power = Mathf.Min(MaxPower, Power + 10f);
-  //  treeController.SetSpringForce(Power);
-  //  return true;
-  //}
-
-  //public bool UpgradeWeight() {
-  //  if (Power - 5f < MinPower) {
-  //    return false;
-  //  }
-  //  Weight += 0.1f;
-  //  Power -= 5f;
-  //  return true;
-  //}
 
   private void Start() {
     Power = MinPower;
@@ -110,6 +72,24 @@ public class GameController : MonoBehaviour {
       sideSwitchCounter += 1;
     }
     xVelocityDirection = newXVelocityDirection;
+  }
+
+  public bool UpgradePower() {
+    if (Power == MaxPower) {
+      return false;
+    }
+    Power = Mathf.Min(MaxPower, Power + 10f);
+    treeController.SetSpringForce(Power);
+    return true;
+  }
+
+  public bool UpgradeSize() {
+    if (Power - 5f < MinPower) {
+      return false;
+    }
+    Weight += 0.1f;
+    Power -= 5f;
+    return true;
   }
 
   //Must wait for some amount of time between pulls
