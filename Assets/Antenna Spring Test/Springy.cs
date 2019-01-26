@@ -7,52 +7,67 @@ public class Springy : MonoBehaviour {
 #pragma warning disable 0649
   [SerializeField] private Transform springTarget;
   [SerializeField] private Transform springObj;
+  public Transform SpringObj { get { return springObj; } }
 
   [Space(12)]
-  [SerializeField] private float drag = 2.5f;//drag
-  [SerializeField] private float springForce = 80.0f;//Spring
+  [SerializeField] private float springForce;
 
   [Space(12)]
   [SerializeField] private Transform GeoParent;
 
-  [SerializeField] private Rigidbody SpringRB;
-
-  [SerializeField] private bool pause = false;
+  private Rigidbody SpringRB;
 #pragma warning restore 0649
 
+  private float Drag { get { return springForce / 20f; } }
 
-  private Vector3 LocalDistance; //Distance between the two points
-  private Vector3 LocalVelocity; //Velocity converted to local space
+  private Vector3 localDistance; //Distance between the two points
+  private Vector3 localVelocity; //Velocity converted to local space
+
+  private bool isPaused = false;
+  private bool dragEnabled = true;
+
+  //Representation of how fast the spring object is moving
+  //The precise value isn't really grounded in math and physics
+  public float Speed { get { return SpringRB.velocity.x; } }
 
   private void Start() {
     SpringRB = springObj.GetComponent<Rigidbody>(); //Find the RigidBody component
     springObj.transform.parent = null; //Take the spring out of the hierarchy
   }
 
-  private void Update() {
-    //Pause and unpause with the space bar
-    if (Input.GetKeyDown(KeyCode.Space)) {
-      pause = !pause;
-      SpringRB.gameObject.SetActive(!pause);
-      Debug.Log(pause ? "Springy paused" : "Springy unpaused");
-    }
-  }
-
   private void FixedUpdate() {
-    if (!pause) {
+    if (!isPaused) {
       //Sync the rotation
       SpringRB.transform.rotation = transform.rotation;
 
       //Calculate the distance between the two points
-      LocalDistance = springTarget.InverseTransformDirection(springTarget.position - springObj.position);
-      SpringRB.AddRelativeForce(LocalDistance * springForce); //Apply Spring
+      localDistance = springTarget.InverseTransformDirection(springTarget.position - springObj.position);
+      SpringRB.AddRelativeForce(localDistance * springForce); //Apply Spring
 
       //Calculate the local velocity of the springObj point
-      LocalVelocity = springObj.InverseTransformDirection(SpringRB.velocity);
-      SpringRB.AddRelativeForce(-LocalVelocity * drag); //Apply drag
-
-      //Aim the visible geo at the spring target
-      GeoParent.transform.LookAt(springObj.position, new Vector3(0, 0, 1));
+      if (dragEnabled) {
+        localVelocity = springObj.InverseTransformDirection(SpringRB.velocity);
+        SpringRB.AddRelativeForce(-localVelocity * Drag); //Apply drag
+      }
     }
+    //Aim the visible geo at the spring target
+    GeoParent.transform.LookAt(springObj.position, new Vector3(0, 0, 1));
+  }
+
+  public void SetSpringForce(float force) {
+    if (force < 0) {
+      Debug.LogError("Cannot set spring force to a negative value");
+    }
+    springForce = force;
+  }
+
+  public void PauseAndResetMomentum(bool isPaused) {
+    this.isPaused = !this.isPaused;
+    SpringRB.gameObject.SetActive(!this.isPaused);
+    SpringRB.velocity = Vector3.zero;
+  }
+
+  public void ToggleDrag(bool dragEnabled) {
+    this.dragEnabled = dragEnabled;
   }
 }
