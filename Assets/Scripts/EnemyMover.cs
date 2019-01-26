@@ -33,7 +33,7 @@ public class EnemyMover : MonoBehaviour
     {
         //die if touches tree ONLY IF tree is slamming [tree script - OnTriggerEnter?]
         //does this enemy's death increase score? [again tree script]
-        //interact with animals (and delay movements) [animal script - rigidbodies] -- trigger AnimalDelay!
+        //interact with animals (and delay movements) [animal script - enemy rigidbodies] -- when trigger entered, destroy both gameobjects
         //deal damage to tree trunk if reached (trigger game over, STOP game) [tree script]
 
         //assuming we're in the x-y plane, move in x direction
@@ -50,16 +50,4 @@ public class EnemyMover : MonoBehaviour
             moving = false;
         }
     }
-
-    //triggered by animal script when they encounter an enemy
-    public void AnimalDelay(float f){
-        AnimalFight(f);
-    }
-
-    IEnumerator AnimalFight(float f){
-        moving = false;
-        yield return new WaitForSeconds(f);
-        moving = true;
-    }
-
 }
