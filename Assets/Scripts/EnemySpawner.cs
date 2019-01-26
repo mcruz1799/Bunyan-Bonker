@@ -12,7 +12,7 @@ public class EnemySpawner : MonoBehaviour
     private int failCounter = 0;
     public int failMax = 5;
     public float spawnDelay = 1.0f; //time interval for coroutine
-    private float pauseDelay = 1.0f; //time after a spawn to reactivate spawning
+    public float pauseDelay = 1.0f; //time after a spawn to reactivate spawning
     private bool pause = false;
     private float pauseTime = 0.0f;
     Quaternion rotation = new Quaternion(0,0,0,0);
