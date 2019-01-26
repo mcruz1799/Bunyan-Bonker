@@ -8,8 +8,8 @@ public class TreeInteract : MonoBehaviour
     public static List<string> enemies;
     bool slamming;
     int score;
-    public int lives = 5;
-    public int interval = 10; //
+   // public int lives = 5;
+   // public int interval = 10; //
     void Start()
     {
         enemies = new List<string>();
@@ -29,14 +29,14 @@ public class TreeInteract : MonoBehaviour
 
 
     //when enemy touches tree branches
-    void OnColliderEnter(Collider other){
+    /*void OnColliderEnter(Collider other){
         if (enemies.Contains(other.tag)) {
-            if (slamming /* && enemy is not being animated */) {
+            if (slamming // && enemy is not being animated) {
                 Destroy(other.gameObject);
 
                 //increase score
                 score += interval;
             }
         }
-    }
+    } */
 }

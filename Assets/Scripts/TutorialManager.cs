@@ -17,14 +17,6 @@ public class TutorialManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {   
-        Debug.Log("Tree angle" + gameController.Angle);
-        if (learning){
-            if (Mathf.Abs(gameController.Angle) < 45.0f){
-                learning = false;
-            }
-        }
-        else enemy.SetActive(true);
-    }
+    void Update(){}
+    
 }
