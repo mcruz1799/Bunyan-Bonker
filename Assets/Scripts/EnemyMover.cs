@@ -50,7 +50,7 @@ public class EnemyMover : MonoBehaviour
             moving = false;
         }
     }
-<<<<<<< HEAD
+
 
     //triggered by animal script when they encounter an enemy
     public void AnimalDelay(float f){
@@ -62,13 +62,4 @@ public class EnemyMover : MonoBehaviour
         yield return new WaitForSeconds(f);
         moving = true;
     }
-
-    //Lumberjack has hit the border, run in opposite direction.
-    public void RunAway()
-    {
-        speed = -speed;
-        //TODO: Flip Animator/Sprite.
-    }
-=======
->>>>>>> 0fc7e1ae1e7e013620f646eba3d1f3a684488541
 }
