@@ -12,6 +12,7 @@ public class EnemyMover : MonoBehaviour
     public float movLum = 0.05f;
     void Start()
     {
+        GetComponent<TreeDamageable>().SetOnDeathBehavior(() => Destroy(gameObject));
         moving = true;
         string name = SceneManager.GetActiveScene().name;
 
