@@ -11,7 +11,7 @@ public class Border : MonoBehaviour
             //An enemy has breached the safe zone.
             GameManager.instance.SafetyBreached();
             
-            //Destroy(other.gameObject);
+            Destroy(other.gameObject);
         }
     }
 }
