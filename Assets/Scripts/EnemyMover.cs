@@ -48,7 +48,6 @@ public class EnemyMover : MonoBehaviour
             transform.position = new Vector3(0, transform.position.y, 
                 transform.position.z);
             moving = false;
-            //trigger animation
         }
     }
 }
