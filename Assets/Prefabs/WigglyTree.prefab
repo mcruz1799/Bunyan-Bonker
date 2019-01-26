@@ -289,6 +289,7 @@ GameObject:
   - component: {fileID: 9013345199327032864}
   - component: {fileID: 9013345199326007252}
   - component: {fileID: 9013345199321875002}
+  - component: {fileID: 4370386486847282719}
   m_Layer: 0
   m_Name: Oak_Tree
   m_TagString: Untagged
@@ -370,6 +371,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 65052f1da03fdf34995b2bfa75773bb8, type: 3}
+--- !u!114 &4370386486847282719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9013345199328229680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f9a96532833b4449dd347d040cc9cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9013345199443195864
 GameObject:
   m_ObjectHideFlags: 0
