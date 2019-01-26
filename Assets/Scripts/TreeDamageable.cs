@@ -19,12 +19,11 @@ public class TreeDamageable : MonoBehaviour {
   }
 
   private void OnCollisionEnter(Collision collision) {
-    TreeController tree = collision.gameObject.GetComponentInParent<TreeController>();
+    TreeHitbox tree = collision.gameObject.GetComponentInParent<TreeHitbox>();
     if (tree == null) {
       return;
     }
 
-    //Debug.Log(collision.impulse);
     TakeDamage((int)Mathf.Abs(tree.Speed));
   }
 

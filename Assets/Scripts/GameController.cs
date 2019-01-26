@@ -12,9 +12,9 @@ public class GameController : MonoBehaviour {
   //public float Power { get; private set; }
 
   //public float MaxWeight { get; }
-  //public float Weight { get; private set; } = 1f;
+  public float Weight { get; private set; } = 100f;
 
-  //public float Speed { get { return treeController.Speed; } }
+  public float Speed { get { return treeController.Speed; } }
 
   public float Angle { get { return treeController.Angle; } }
 
