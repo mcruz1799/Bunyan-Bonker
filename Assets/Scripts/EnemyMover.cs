@@ -17,12 +17,11 @@ public class EnemyMover : MonoBehaviour
         string name = SceneManager.GetActiveScene().name;
 
         //DANGEROUS: assumes level name is a number w/at least 1 char
-        level = int.Parse(name.Substring(name.Length - 1));
+        //level = int.Parse(name.Substring(name.Length - 1));
 
         //some enemies faster than others
         if (this.tag == "lumberjack") {
-            //increase speed per level
-            speed = movLum * level;
+            speed = movLum; // * level;
             //assuming tree is at 0, check which side we are on
             if(this.transform.position.x > 0) speed = -speed;
         }
@@ -47,17 +46,5 @@ public class EnemyMover : MonoBehaviour
                 transform.position.z);
             moving = false;
         }
-    }
-
-
-    //triggered by animal script when they encounter an enemy
-    public void AnimalDelay(float f){
-        AnimalFight(f);
-    }
-
-    IEnumerator AnimalFight(float f){
-        moving = false;
-        yield return new WaitForSeconds(f);
-        moving = true;
     }
 }
