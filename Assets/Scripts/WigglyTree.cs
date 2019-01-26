@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ITree {
+public interface IWigglyTree {
   //Higher Speed increases the damage you deal
   float Speed { get; }
 
@@ -22,7 +22,7 @@ public interface ITree {
   bool UpgradeSize();
 }
 
-public class WigglyTree : MonoBehaviour, ITree {
+public class WigglyTree : MonoBehaviour, IWigglyTree {
   private GameController gameController;
 
   private void Awake() {
