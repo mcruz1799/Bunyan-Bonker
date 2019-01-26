@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        addLives();
     }
 
     // Update is called once per frame
@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
     {
         lives -= 1;
         Debug.Log("Lives Left:" + lives);
+        removeAnimal();
         checkGameOver();
     }
     void OnLevelWasLoaded(int index)
@@ -89,8 +90,36 @@ public class GameManager : MonoBehaviour
             #endif
         }
     }
+<<<<<<< HEAD
     void GameOver()
     {
         levelText.text = "The Bunyans chopped you down!";
+=======
+
+    //Adds Animals representing the Lives.
+    void addLives()
+    {
+        for (int i = 0; i < lives; i++)
+        {
+            //TODO: Replace with random selection from animals.
+            Instantiate(Resources.Load("256px"), new Vector3(Random.Range(-4, 4), 2, 0),transform.rotation);
+        }
+    }
+
+    void removeAnimal()
+    {
+        GameObject[] Animals;
+        Animals = GameObject.FindGameObjectsWithTag("Animal");
+
+        if (Animals.Length == 0)
+        {
+            Debug.Log("All the animals have already left. :(");
+        } else
+        {
+            int index = Random.Range(0, Animals.Length);
+            GameObject animal = Animals[index];
+            Destroy(animal);
+        }
+>>>>>>> 3fce5ca4099e144cd4d68eafc38354f46c082d2b
     }
 }
