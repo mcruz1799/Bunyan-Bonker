@@ -16,6 +16,8 @@ public class GameController : MonoBehaviour {
 
   //public float Speed { get { return treeController.Speed; } }
 
+  public float Angle { get { return treeController.Angle; } }
+
   private bool canPull = true;
   private float pullCooldownTime = 2f;
 
