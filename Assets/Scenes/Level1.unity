@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -411,7 +411,7 @@ MonoBehaviour:
   spawnProbability: 2
   failMax: 5
   spawnDelay: 1
-  pauseDelay: 3
+  pauseDelay: 1
 --- !u!1 &2121881295
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,6 +686,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8614f9c2153a5418835a43b2f6f4e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lives: 3
+  animal: {fileID: 5492748745986534349, guid: 2a5d87da9c5126b4f8a4995fc86557d7, type: 3}
+  interval: 10
 --- !u!33 &8761378709589586724
 MeshFilter:
   m_ObjectHideFlags: 0
