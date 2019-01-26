@@ -98,16 +98,6 @@ public class GameManager : MonoBehaviour
             #endif
         }
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> ccffcc93fc43db617956e66302851acf98bf120b
-    void GameOver()
-    {
-        levelText.text = "The Bunyans chopped you down!";
-    }
-<<<<<<< HEAD
-=======
 
     //Adds Animals representing the Lives.
     void addLives()
@@ -135,5 +125,4 @@ public class GameManager : MonoBehaviour
         }
 
     }
->>>>>>> ccffcc93fc43db617956e66302851acf98bf120b
 }
