@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public GameController gameController;
+    public GameObject enemy;
 
     public static GameManager instance = null; //Allows GM to be accessed by other scripts.
 
     private static int lives = 6;
-
-    // private static bool tutorial = false; 
-
+    private Text levelText;
+    private Text instructionalText; //for tutorial
+    private int level = -1; //start menu as -1 tutorial as 0, etc.
 
     private void Awake()
     {
@@ -42,8 +45,16 @@ public class GameManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
+    {   
+        if (level == 0){ //tutorial
+            bool learning = true;
+            if (learning){
+                if (Mathf.Abs(gameController.Angle) < 45.0f){
+                    learning = false;
+                }
+            }
+            else enemy.SetActive(true); 
+        }
     }
 
     /* Game State: Lumberjacks reached the tree, Players lose a 'life' (or animal.)
@@ -55,7 +66,15 @@ public class GameManager : MonoBehaviour
         removeAnimal();
         checkGameOver();
     }
-
+    void OnLevelWasLoaded(int index)
+    {
+        level++;
+    }
+    void InitLevel()
+    {
+        levelText = GameObject.Find("LevelText").GetComponent<Text>();
+        levelText.text = "Day " + level;
+    }
     void checkGameOver()
     {
         if (lives <= 0)
@@ -71,6 +90,11 @@ public class GameManager : MonoBehaviour
             #endif
         }
     }
+<<<<<<< HEAD
+    void GameOver()
+    {
+        levelText.text = "The Bunyans chopped you down!";
+=======
 
     //Adds Animals representing the Lives.
     void addLives()
@@ -96,5 +120,6 @@ public class GameManager : MonoBehaviour
             GameObject animal = Animals[index];
             Destroy(animal);
         }
+>>>>>>> 3fce5ca4099e144cd4d68eafc38354f46c082d2b
     }
 }
