@@ -209,8 +209,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9013345199229108138}
   - component: {fileID: 9013345199229108139}
+  - component: {fileID: 2206758221096924649}
   - component: {fileID: 9013345199229108137}
-  - component: {fileID: 9013345199229108136}
   m_Layer: 0
   m_Name: WigglyTree
   m_TagString: Untagged
@@ -246,7 +246,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015154a844b42634aa49b0383324178b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treeController: {fileID: 9013345199229108136}
+  treeController: {fileID: 2206758221096924649}
+--- !u!114 &2206758221096924649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9013345199229108143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaa33c0cc62d17843afd0ccc355464ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _angleChange: 30
+  pullTime: 1
 --- !u!114 &9013345199229108137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,20 +277,6 @@ MonoBehaviour:
   springObj: {fileID: 9013345198437006156}
   springForce: 10
   GeoParent: {fileID: 9013345200418401121}
---- !u!114 &9013345199229108136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9013345199229108143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eaa33c0cc62d17843afd0ccc355464ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _angleChange: 30
-  pullTime: 1
 --- !u!1 &9013345199328229680
 GameObject:
   m_ObjectHideFlags: 0
