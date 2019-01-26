@@ -8,26 +8,68 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemy;
     public Transform leftSpawnTransform;
     public Transform rightSpawnTransform;
-    public float spawnRate = 5.0f;
+    public float spawnProbability = 2.0f;
+    private int failCounter = 0;
+    public int failMax = 5;
+    public float spawnDelay = 1.0f; //time interval for coroutine
+    private float pauseDelay = 1.0f; //time after a spawn to reactivate spawning
+    private bool pause = false;
+    private float pauseTime = 0.0f;
+    Quaternion rotation = new Quaternion(0,0,0,0);
 
-    
 
 
     // Start is called before the first frame update
     void Awake()
     {
-        InvokeRepeating("Spawn", 2.0f, spawnRate);
-
+        StartCoroutine("Spawn");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    public IEnumerator Spawn(){
+        while(true){
+            if (Time.time - pauseTime >= pauseDelay) pause = false;
+            if (!pause){
+                float currLeft = Random.Range(0.0f, 10.0f);
+                if (currLeft <= spawnProbability)
+                {
+                    SpawnLeft();
+                    pause = true;
+                    pauseTime = Time.time;
+                }
+                else
+                {
+                    failCounter++;
+                }
+                float currRight = Random.Range(0.0f, 10.0f);
+                if (currRight <= spawnProbability)
+                {
+                    SpawnRight();
+                    pause = true;
+                    pauseTime = Time.time;
+                }
+                else
+                {
+                    failCounter++;
+                }
+                failCheck();
+            }
+            yield return new WaitForSeconds(spawnDelay);
+        }
     }
-
-    void Spawn(){
-        Quaternion rotation = new Quaternion(0,0,0,0);
+    void SpawnLeft(){
         Object.Instantiate(enemy, leftSpawnTransform.position, rotation );
+    }
+    void SpawnRight(){
         Object.Instantiate(enemy, rightSpawnTransform.position, rotation);
+
+    }
+    void failCheck()
+    {
+        if (failCounter >= failMax){
+            float temp = Random.Range(0.0f, 10.0f);
+            if (temp > 5) SpawnLeft();
+            else SpawnRight();
+            failCounter = 0;
+        }
     }
 }
