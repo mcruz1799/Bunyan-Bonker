@@ -19,7 +19,7 @@ public class EnemyMover : MonoBehaviour
         //some enemies faster than others
         if (this.tag == "squirrel") {
             //increase speed per level
-            speed = 2 * level;
+            speed = 0.2f * level;
             //assuming tree is at 0, check which side we are on
             if(this.transform.position.x > 0) speed = -speed;
         } 
@@ -33,7 +33,7 @@ public class EnemyMover : MonoBehaviour
     {
         //die if touches tree ONLY IF tree is slamming [tree script - OnTriggerEnter?]
         //does this enemy's death increase score? [again tree script]
-        //interact with animals (and delay movements) [animal script - rigidbodies] -- trigger AnimalDelay!
+        //interact with animals (and delay movements) [animal script - enemy rigidbodies] -- when trigger entered, destroy both gameobjects
         //deal damage to tree trunk if reached (trigger game over, STOP game) [tree script]
 
         //assuming we're in the x-y plane, move in x direction
@@ -50,6 +50,7 @@ public class EnemyMover : MonoBehaviour
             moving = false;
         }
     }
+<<<<<<< HEAD
 
     //triggered by animal script when they encounter an enemy
     public void AnimalDelay(float f){
@@ -68,4 +69,6 @@ public class EnemyMover : MonoBehaviour
         speed = -speed;
         //TODO: Flip Animator/Sprite.
     }
+=======
+>>>>>>> 0fc7e1ae1e7e013620f646eba3d1f3a684488541
 }
