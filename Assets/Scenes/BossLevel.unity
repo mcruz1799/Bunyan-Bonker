@@ -671,20 +671,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 4409489090152523378, guid: b924415129cd44546b8a246059fb5bed,
+        type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
     - target: {fileID: 7657938037247088332, guid: b924415129cd44546b8a246059fb5bed,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.92
+      value: -13.18
       objectReference: {fileID: 0}
     - target: {fileID: 7657938037247088332, guid: b924415129cd44546b8a246059fb5bed,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.78
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 7657938037247088332, guid: b924415129cd44546b8a246059fb5bed,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.041666664
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7657938037247088332, guid: b924415129cd44546b8a246059fb5bed,
         type: 3}
@@ -725,6 +730,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4409489090152523379, guid: b924415129cd44546b8a246059fb5bed,
+        type: 3}
+      propertyPath: _maxHp
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b924415129cd44546b8a246059fb5bed, type: 3}
