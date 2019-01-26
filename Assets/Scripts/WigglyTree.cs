@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Hidden.WigglyTreeControls;
 
 public interface IWigglyTree {
   //Higher Speed increases the damage you deal

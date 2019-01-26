@@ -7,12 +7,12 @@ using UnityEngine;
 public class TreeHitbox : MonoBehaviour {
 
   //Parent of TreeHitbox
-  private GameController tree;
+  private WigglyTree tree;
 
   //public float Weight => tree.Weight;
   public float Speed => tree.Speed;
 
   private void Awake() {
-    tree = GetComponentInParent<GameController>();
+    tree = GetComponentInParent<WigglyTree>();
   }
 }
