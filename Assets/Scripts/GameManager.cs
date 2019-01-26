@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public GameController gameController;
+    public WigglyTree wigglyTree;
     public GameObject enemy;
 
     public static GameManager instance = null; //Allows GM to be accessed by other scripts.
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         if (level == 0){ //tutorial
             bool learning = true;
             if (learning){
-                if (Mathf.Abs(gameController.Angle) < 45.0f){
+                if (Mathf.Abs(wigglyTree.Angle) < 45.0f){
                     learning = false;
                 }
             }
@@ -90,36 +90,8 @@ public class GameManager : MonoBehaviour
             #endif
         }
     }
-<<<<<<< HEAD
     void GameOver()
     {
         levelText.text = "The Bunyans chopped you down!";
-=======
-
-    //Adds Animals representing the Lives.
-    void addLives()
-    {
-        for (int i = 0; i < lives; i++)
-        {
-            //TODO: Replace with random selection from animals.
-            Instantiate(Resources.Load("256px"), new Vector3(Random.Range(-4, 4), 2, 0),transform.rotation);
-        }
-    }
-
-    void removeAnimal()
-    {
-        GameObject[] Animals;
-        Animals = GameObject.FindGameObjectsWithTag("Animal");
-
-        if (Animals.Length == 0)
-        {
-            Debug.Log("All the animals have already left. :(");
-        } else
-        {
-            int index = Random.Range(0, Animals.Length);
-            GameObject animal = Animals[index];
-            Destroy(animal);
-        }
->>>>>>> 3fce5ca4099e144cd4d68eafc38354f46c082d2b
     }
 }
