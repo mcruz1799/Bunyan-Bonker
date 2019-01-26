@@ -6,7 +6,7 @@ public class Border : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy")
+        if (TreeInteract.enemies.Contains(other.tag))
         {
             //An enemy has breached the safe zone.
             GameManager.instance.SafetyBreached();

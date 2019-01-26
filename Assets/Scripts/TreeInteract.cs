@@ -5,10 +5,10 @@ using UnityEngine;
 public class TreeInteract : MonoBehaviour
 {
     // Start is called before the first frame update
-    List<string> enemies;
+    public static List<string> enemies;
     bool slamming;
     int score;
-    public int lives = 3;
+    public int lives = 5;
     public Transform animal;
     public int interval = 10; //
     void Start()
@@ -38,6 +38,7 @@ public class TreeInteract : MonoBehaviour
         }
     }
 
+    //when enemy touches tree branches
     void OnColliderEnter(Collider other){
         if (enemies.Contains(other.tag)) {
             if (slamming /* && enemy is not being animated */) {
