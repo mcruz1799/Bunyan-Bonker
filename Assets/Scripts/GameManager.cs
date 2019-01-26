@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null; //Allows GM to be accessed by other scripts.
 
     private static int lives = 6;
+
+    private static bool tutorial = false;
 
 
     private void Awake()
@@ -26,11 +29,15 @@ public class GameManager : MonoBehaviour
 
         //Sets this to not be destroyed when reloading scene
         DontDestroyOnLoad(gameObject);
+        
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.buildIndex == 1) tutorial = true;
     }
 
     // Start is called before the first frame update
     void Start()
     {
+       
     }
 
     // Update is called once per frame
