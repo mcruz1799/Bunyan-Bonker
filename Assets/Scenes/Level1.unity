@@ -408,9 +408,9 @@ MonoBehaviour:
   enemy: {fileID: 4822582402346032137, guid: 80cea960ec7dc2444af34acc924432c4, type: 3}
   leftSpawnTransform: {fileID: 794974854}
   rightSpawnTransform: {fileID: 2121881296}
-  spawnProbability: 1
+  spawnProbability: 2
   failMax: 5
-  spawnDelay: 2
+  spawnDelay: 1
 --- !u!1 &2121881295
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,12 +507,12 @@ PrefabInstance:
     - target: {fileID: 3342104501862496617, guid: b832f693838b3ea45a306752979be5b6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.53021777
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3342104501862496617, guid: b832f693838b3ea45a306752979be5b6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.03
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3342104501862496617, guid: b832f693838b3ea45a306752979be5b6,
         type: 3}
@@ -542,7 +542,7 @@ PrefabInstance:
     - target: {fileID: 3342104501862496617, guid: b832f693838b3ea45a306752979be5b6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3342104501862496617, guid: b832f693838b3ea45a306752979be5b6,
         type: 3}
@@ -626,7 +626,7 @@ PrefabInstance:
     - target: {fileID: 5492748745986534349, guid: 2a5d87da9c5126b4f8a4995fc86557d7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5492748745986534349, guid: 2a5d87da9c5126b4f8a4995fc86557d7,
         type: 3}
