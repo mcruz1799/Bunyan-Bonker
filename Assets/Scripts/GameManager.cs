@@ -90,8 +90,42 @@ public class GameManager : MonoBehaviour
             #endif
         }
     }
+<<<<<<< HEAD
     void GameOver()
     {
         levelText.text = "The Bunyans chopped you down!";
+=======
+
+    void GameOver()
+    {
+        levelText.text = "The Bunyans chopped you down!";
+    }
+
+    //Adds Animals representing the Lives.
+    void addLives()
+    {
+        for (int i = 0; i < lives; i++)
+        {
+            //TODO: Replace with random selection from animals.
+            Instantiate(Resources.Load("256px"), new Vector3(Random.Range(-4, 4), 2, 0),transform.rotation);
+        }
+    }
+
+    void removeAnimal()
+    {
+        GameObject[] Animals;
+        Animals = GameObject.FindGameObjectsWithTag("Animal");
+
+        if (Animals.Length == 0)
+        {
+            Debug.Log("All the animals have already left. :(");
+        } else
+        {
+            int index = Random.Range(0, Animals.Length);
+            GameObject animal = Animals[index];
+            Destroy(animal);
+        }
+
+>>>>>>> 181fcae1cfa5efd3b10ad2086a1a94085e08b7c8
     }
 }
