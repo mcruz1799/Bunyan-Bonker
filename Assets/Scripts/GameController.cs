@@ -30,7 +30,7 @@ namespace Hidden.WigglyTreeControls {
     private int switchesBeforeDragKicksIn = 4;
     private int xVelocityDirection = 0;
     private void Update() {
-      //Pull/release the tree with the space bar
+      //Pull/release the tree by pushing/releasing the space bar
       if (canPull && Input.GetKeyDown(KeyCode.Space)) {
         bool startPullingSucceeded = treeController.StartPulling();
         if (!startPullingSucceeded) {
@@ -39,8 +39,9 @@ namespace Hidden.WigglyTreeControls {
         sideSwitchCounter = 0;
         treeController.ToggleDrag(false);
         StartCoroutine(PullCooldownRoutine(pullCooldownTime));
+      }
 
-      } else if (Input.GetKeyUp(KeyCode.Space)) {
+      if (Input.GetKeyUp(KeyCode.Space)) {
         treeController.StopPulling();
       }
 
