@@ -49,18 +49,17 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        if (level == 0){ //tutorial
+        if (level == 0 && learning)
+        { //tutorial
             instructionalText = GameObject.Find("InstructionalText").GetComponent<Text>();
-            instructionalText.gameObject.SetActive(true);
-            while (learning)
+            instructionalText.text = instruction1;
+            if (Mathf.Abs(wigglyTree.Angle) < 45.0f) 
             {
-                instructionalText.text = instruction1;
-                if (Mathf.Abs(wigglyTree.Angle) < 45.0f){
-                    learning = false;
-                }
+                learning = false;
+                instructionalText.text = instruction2;
+                enemy.SetActive(true);
             }
-            instructionalText.text = instruction2;
-            enemy.SetActive(true); 
+             
         }
     }
 
@@ -80,8 +79,15 @@ public class GameManager : MonoBehaviour
     }
     void InitLevel()
     {
-        levelText = GameObject.Find("LevelText").GetComponent<Text>();
-        levelText.text = "Day " + level;
+        if (level >= 0) 
+        {
+            levelText = GameObject.Find("LevelText").GetComponent<Text>();
+            levelText.text = "Day " + level;
+        }
+        if (level >= 1)
+        {
+            // instructionalText.gameObject.SetActive(false);
+        }
     }
     void checkGameOver()
     {
@@ -98,6 +104,13 @@ public class GameManager : MonoBehaviour
             #endif
         }
     }
+<<<<<<< HEAD
+    void GameOver()
+    {
+        levelText.text = "The Bunyans chopped you down!";
+    }
+=======
+>>>>>>> 85bf66f2855c332355103d2fc4c3f0c63f374017
 
     //Adds Animals representing the Lives.
     void addLives()
