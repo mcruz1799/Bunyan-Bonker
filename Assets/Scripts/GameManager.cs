@@ -20,13 +20,19 @@ public class GameManager : MonoBehaviour
         
     }
 
-    /* Game State: Lumberjacks reached the tree.
-     * 1. Remove an animal
-     * 2. Update Lives
-     * 3. Send Lumberjacks offscreen.
+    /* Game State: Lumberjacks reached the tree, Players lose a 'life' (or animal.)
                                                   */
     public void SafetyBreached()
     {
+        lives -= 1;
+    }
 
+    void checkGameOver()
+    {
+        if (lives == 0)
+        {
+            //TODO: Replace with Game Over State.
+            Application.Quit();
+        }
     }
 }

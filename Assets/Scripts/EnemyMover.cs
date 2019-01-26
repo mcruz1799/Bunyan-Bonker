@@ -62,4 +62,10 @@ public class EnemyMover : MonoBehaviour
         moving = true;
     }
 
+    //Lumberjack has hit the border, run in opposite direction.
+    public void RunAway()
+    {
+        speed = -speed;
+        //TODO: Flip Animator/Sprite.
+    }
 }
