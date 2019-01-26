@@ -26,7 +26,7 @@ public class EnemyMover : MonoBehaviour
             if(this.transform.position.x > 0) speed = -speed;
         }
         else{
-            speed = movGen * level;
+            speed = movGen; //* level;
             if(this.transform.position.x > 0) speed = -speed;
         }
     }
