@@ -9,7 +9,7 @@ public class EnemyMover : MonoBehaviour
     float speed;
     bool moving;
     public float movGen = 0.02f;
-    public float movSq = 0.05f;
+    public float movLum = 0.05f;
     void Start()
     {
         moving = true;
@@ -19,9 +19,9 @@ public class EnemyMover : MonoBehaviour
         level = int.Parse(name.Substring(name.Length - 1));
 
         //some enemies faster than others
-        if (this.tag == "squirrel") {
+        if (this.tag == "lumberjack") {
             //increase speed per level
-            speed = movSq * level;
+            speed = movLum * level;
             //assuming tree is at 0, check which side we are on
             if(this.transform.position.x > 0) speed = -speed;
         }
