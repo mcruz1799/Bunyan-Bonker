@@ -18,7 +18,12 @@ public class TutorialManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if (Time.time >= learnTime && enemy != null) enemy.SetActive(true);
+    {   
+        if (learning){
+            if (gameController.Angle > 45.0f || gameController.Angle < -45.0f){
+            learning = false;
+            }
+        }
+        else enemy.SetActive(true);
     }
 }
