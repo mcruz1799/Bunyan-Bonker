@@ -13,6 +13,7 @@ public class TreeInteract : MonoBehaviour
     public int interval = 10; //
     void Start()
     {
+        enemies = new List<string>();
         //add types of enemy tags here
         enemies.Add("lumberjack");
 

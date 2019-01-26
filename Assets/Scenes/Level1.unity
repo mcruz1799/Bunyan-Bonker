@@ -405,7 +405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9a53148f85a24cf9be0f22fd2c6a94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 4822582402346032137, guid: 80cea960ec7dc2444af34acc924432c4, type: 3}
+  enemy: {fileID: 4835815621768737854, guid: 80cea960ec7dc2444af34acc924432c4, type: 3}
   leftSpawnTransform: {fileID: 794974854}
   rightSpawnTransform: {fileID: 2121881296}
   spawnProbability: 2
