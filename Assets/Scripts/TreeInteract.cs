@@ -9,7 +9,6 @@ public class TreeInteract : MonoBehaviour
     bool slamming;
     int score;
     public int lives = 5;
-    public Transform animal;
     public int interval = 10; //
     void Start()
     {
@@ -23,20 +22,10 @@ public class TreeInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //gamemanager: handle animal instantiation, animal deletion, lumberjack animation trigger
 
     }
 
-    //if someone enters safe zone
-    void OnTriggerEnter(Collider other){
-        if (enemies.Contains(other.tag)) {
-            if (lives > 0){
-                //instantiate animal and trigger animation
-            }
-            else{
-                //game over
-            }
-        }
-    }
 
     //when enemy touches tree branches
     void OnColliderEnter(Collider other){
