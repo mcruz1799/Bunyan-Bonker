@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Border : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
+        if (other.tag == "Enemy")
+        {
+            //An enemy has breached the safe zone.
+            GameManager.instance.SafetyBreached();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        }
     }
 }
