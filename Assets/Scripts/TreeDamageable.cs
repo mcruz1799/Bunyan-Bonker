@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Collider))]
@@ -28,8 +29,13 @@ public class TreeDamageable : MonoBehaviour {
   }
 
   private void TakeDamage(int damage) {
-    Debug.Log(damage);
+    if (CurrentHp <= 0) {
+      return;
+    }
     CurrentHp -= damage;
+    if (damage > 0) {
+      onDamaged.Invoke();
+    }
     if (CurrentHp <= 0) {
       CurrentHp = 0;
       onDeathFunction();
@@ -39,5 +45,10 @@ public class TreeDamageable : MonoBehaviour {
   public delegate void OnDeath();
   public void SetOnDeathBehavior(OnDeath onDeathFunction) {
     this.onDeathFunction = onDeathFunction;
+  }
+
+  private UnityEvent onDamaged = new UnityEvent();
+  public void AddOnDamagedListener(UnityAction onDamaged) {
+    this.onDamaged.AddListener(onDamaged);
   }
 }
