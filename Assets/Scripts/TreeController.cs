@@ -5,7 +5,7 @@ using UnityEngine;
 public class TreeController : MonoBehaviour {
 #pragma warning disable 0649
   [SerializeField] private float _angleChange; //Degrees
-  [SerializeField] private float angleChangeTime; //Seconds
+  [SerializeField] private float pullTime; //Seconds
 #pragma warning restore 0649
 
   //[Denominator] frames per second
@@ -33,10 +33,14 @@ public class TreeController : MonoBehaviour {
     }
   }
 
-  public Vector3 Velocity { get { return treeSlingshot.Velocity; } }
+  public float Speed { get { return treeSlingshot.Speed; } }
 
   private void Awake() {
     treeSlingshot = GetComponent<Springy>();
+  }
+
+  public void SetSpringForce(float force) {
+    treeSlingshot.SetSpringForce(force);
   }
 
   public bool StartPulling() {
@@ -72,7 +76,7 @@ public class TreeController : MonoBehaviour {
       targetX = initialPosition.y / Mathf.Tan(theta1 - AngleChange);
     }
 
-    float deltaXPerUnitTime = (targetX - initialX) / angleChangeTime * angleChangeTimeIncrement;
+    float deltaXPerUnitTime = (targetX - initialX) / pullTime * angleChangeTimeIncrement;
 
     StartCoroutine(PullRoutine(targetX, deltaXPerUnitTime));
     return true;

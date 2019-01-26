@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 [SelectionBase] //Diverts the selection to this object
 public class Springy : MonoBehaviour {
@@ -11,7 +10,6 @@ public class Springy : MonoBehaviour {
   public Transform SpringObj { get { return springObj; } }
 
   [Space(12)]
-  [SerializeField] private float drag;
   [SerializeField] private float springForce;
 
   [Space(12)]
@@ -20,14 +18,17 @@ public class Springy : MonoBehaviour {
   private Rigidbody SpringRB;
 #pragma warning restore 0649
 
+  private float Drag { get { return springForce / 20f; } }
+
   private Vector3 localDistance; //Distance between the two points
   private Vector3 localVelocity; //Velocity converted to local space
 
   private bool isPaused = false;
   private bool dragEnabled = true;
 
-  //Velocity that the spring (i.e. the end of the object) is moving at
-  public Vector3 Velocity { get { return SpringRB.velocity; } }
+  //Representation of how fast the spring object is moving
+  //The precise value isn't really grounded in math and physics
+  public float Speed { get { return SpringRB.velocity.x; } }
 
   private void Start() {
     SpringRB = springObj.GetComponent<Rigidbody>(); //Find the RigidBody component
@@ -46,11 +47,18 @@ public class Springy : MonoBehaviour {
       //Calculate the local velocity of the springObj point
       if (dragEnabled) {
         localVelocity = springObj.InverseTransformDirection(SpringRB.velocity);
-        SpringRB.AddRelativeForce(-localVelocity * drag); //Apply drag
+        SpringRB.AddRelativeForce(-localVelocity * Drag); //Apply drag
       }
     }
     //Aim the visible geo at the spring target
     GeoParent.transform.LookAt(springObj.position, new Vector3(0, 0, 1));
+  }
+
+  public void SetSpringForce(float force) {
+    if (force < 0) {
+      Debug.LogError("Cannot set spring force to a negative value");
+    }
+    springForce = force;
   }
 
   public void PauseAndResetMomentum(bool isPaused) {
