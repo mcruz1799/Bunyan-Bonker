@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Border : MonoBehaviour
 {
@@ -9,8 +10,10 @@ public class Border : MonoBehaviour
         if (TreeInteract.enemies.Contains(other.tag))
         {
             //An enemy has breached the safe zone.
-            GameManager.instance.SafetyBreached();
-            
+            if (SceneManager.GetActiveScene().name != "Level0")
+            { 
+                GameManager.instance.SafetyBreached();
+            }
             Destroy(other.gameObject);
         }
     }

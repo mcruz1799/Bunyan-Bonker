@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     private static int lives = 6;
 
-    private static bool tutorial = false;
+    // private static bool tutorial = false; 
 
 
     private void Awake()
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         
         Scene scene = SceneManager.GetActiveScene();
-        if (scene.buildIndex == 1) tutorial = true;
+        // if (scene.buildIndex == 1) tutorial = true;
     }
 
     // Start is called before the first frame update
