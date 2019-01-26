@@ -2,19 +2,58 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public interface ITree {
+  //Higher Speed increases the damage you deal
+  float Speed { get; }
+
+  float Angle { get; }
+
+  //Higher Power means the tree wiggles faster
+  //Speed will be higher, but it's harder to time your wiggles
+  float Power { get; }
+
+  //Higher Weight increases the damage you deal
+  float Weight { get; }
+
+  //Increases Power
+  bool UpgradePower();
+
+  //Increases Weight, decreases Power, and enlarges the tree sprite
+  bool UpgradeSize();
+}
+
+public class WigglyTree : ITree {
+  private GameController gameController;
+
+  public float Speed => gameController.Speed;
+
+  public float Angle => gameController.Angle;
+
+  public float Power => gameController.Power;
+
+  public float Weight => throw new System.NotImplementedException();
+
+  public bool UpgradePower() {
+    throw new System.NotImplementedException();
+  }
+
+  public bool UpgradeSize() {
+    throw new System.NotImplementedException();
+  }
+}
+
 public class GameController : MonoBehaviour {
 #pragma warning disable 0649
   [SerializeField] private TreeController treeController;
 #pragma warning restore 0649
 
-  //public float MaxPower { get; } = 100f; //Max Speed is about 400
-  //public float MinPower { get; } = 10f; //Max Speed is about 100
-  //public float Power { get; private set; }
+  public float MaxPower { get; } = 100f; //Max Speed is about 400
+  public float MinPower { get; } = 10f; //Max Speed is about 100
+  public float Power { get; private set; }
 
   //public float MaxWeight { get; }
-  //public float Weight { get; private set; } = 1f;
-
-  //public float Speed { get { return treeController.Speed; } }
+  //public float Weight { get; private set; } = 100f;
+  public float Speed { get { return treeController.Speed; } }
 
   public float Angle { get { return treeController.Angle; } }
 
@@ -40,6 +79,11 @@ public class GameController : MonoBehaviour {
   //  Power -= 5f;
   //  return true;
   //}
+
+  private void Start() {
+    Power = MinPower;
+    treeController.SetSpringForce(Power);
+  }
 
   private int sideSwitchCounter;
   private int switchesBeforeDragKicksIn = 4;

@@ -7,7 +7,7 @@ public class TutorialManager : MonoBehaviour
     public GameObject enemy;
     public GameController gameController;
     private bool learning = true;
-    public float learnTime = 20.0f;
+    //public float learnTime = 20.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +18,13 @@ public class TutorialManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if (Time.time >= learnTime && enemy != null) enemy.SetActive(true);
+    {   
+        Debug.Log("Tree angle" + gameController.Angle);
+        if (learning){
+            if (Mathf.Abs(gameController.Angle) < 45.0f){
+                learning = false;
+            }
+        }
+        else enemy.SetActive(true);
     }
 }
