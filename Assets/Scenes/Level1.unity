@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -281,24 +281,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &780127205 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 534112735878030437, guid: 51e112767377c9b4785e6617d8fb5136,
-    type: 3}
-  m_PrefabInstance: {fileID: 2842724216408830954}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &780127206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 780127205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cf23f24355888744846f78d33930d5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &794974853
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,9 +470,9 @@ MonoBehaviour:
   leftSpawnTransform: {fileID: 794974854}
   rightSpawnTransform: {fileID: 2121881296}
   spawnProbability: 2
-  failMax: 5
+  failMax: 10
   spawnDelay: 1
-  pauseDelay: 1
+  pauseDelay: 3
 --- !u!1 &2121881295
 GameObject:
   m_ObjectHideFlags: 0
