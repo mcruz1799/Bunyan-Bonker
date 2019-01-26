@@ -23,7 +23,7 @@ public class TreeController : MonoBehaviour {
   public bool IsBeingPulled { get; private set; }
 
   //Degrees left (negative) or right (positive) of the y-axis (vertical)
-  public float CurrentAngle {
+  public float Angle {
     get {
       Vector3 currentPosition = treeSlingshot.SpringObj.position;
       if (currentPosition.x == 0) {
