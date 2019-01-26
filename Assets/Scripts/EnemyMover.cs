@@ -19,12 +19,12 @@ public class EnemyMover : MonoBehaviour
         //some enemies faster than others
         if (this.tag == "squirrel") {
             //increase speed per level
-            speed = 0.2f * level;
+            speed = 0.05f * level;
             //assuming tree is at 0, check which side we are on
             if(this.transform.position.x > 0) speed = -speed;
         } 
         else{
-            speed = 0.05f * level;
+            speed = 0.02f * level;
             if(this.transform.position.x > 0) speed = -speed;
         }
     }
@@ -48,6 +48,7 @@ public class EnemyMover : MonoBehaviour
             transform.position = new Vector3(0, transform.position.y, 
                 transform.position.z);
             moving = false;
+            //trigger animation
         }
     }
 }
