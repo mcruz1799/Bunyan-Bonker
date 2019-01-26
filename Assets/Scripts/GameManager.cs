@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public GameController gameController;
+    public WigglyTree wigglyTree;
     public GameObject enemy;
 
     public static GameManager instance = null; //Allows GM to be accessed by other scripts.
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         if (level == 0){ //tutorial
             bool learning = true;
             if (learning){
-                if (Mathf.Abs(gameController.Angle) < 45.0f){
+                if (Mathf.Abs(wigglyTree.Angle) < 45.0f){
                     learning = false;
                 }
             }
