@@ -614,6 +614,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8614f9c2153a5418835a43b2f6f4e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slamming: 0
+  score: 0
 --- !u!1 &1539906392
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,7 +694,7 @@ PrefabInstance:
     - target: {fileID: 7657938037247088332, guid: b924415129cd44546b8a246059fb5bed,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.8
+      value: 1.78
       objectReference: {fileID: 0}
     - target: {fileID: 7657938037247088332, guid: b924415129cd44546b8a246059fb5bed,
         type: 3}
@@ -731,10 +741,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4409489090152523341, guid: b924415129cd44546b8a246059fb5bed,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 4409489090152523379, guid: b924415129cd44546b8a246059fb5bed,
         type: 3}
       propertyPath: _maxHp
-      value: 1
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b924415129cd44546b8a246059fb5bed, type: 3}

@@ -7,7 +7,7 @@ public class Border : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (TreeInteract.enemies.Contains(other.tag))
+        if (WigglyTree.enemies.Contains(other.tag))
         {
             //An enemy has breached the safe zone.
             if (SceneManager.GetActiveScene().name != "Level0")
@@ -15,6 +15,9 @@ public class Border : MonoBehaviour
                 GameManager.instance.SafetyBreached();
             }
             Destroy(other.gameObject);
+        }
+        if (other.tag == "Boss"){
+                other.GetComponent<BossMechanics>().SwitchSides();
         }
     }
 }
