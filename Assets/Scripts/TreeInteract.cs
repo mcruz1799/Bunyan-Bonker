@@ -15,6 +15,7 @@ public class TreeInteract : MonoBehaviour
         enemies = new List<string>();
         //add types of enemy tags here
         enemies.Add("lumberjack");
+        enemies.Add("Enemy");
 
         slamming = false;
     }
