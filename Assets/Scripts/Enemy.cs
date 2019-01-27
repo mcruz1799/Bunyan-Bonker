@@ -13,7 +13,11 @@ public class Enemy : MonoBehaviour {
     GetComponent<TreeDamageable>().SetOnDeathBehavior(OnDeath);
     if (transform.position.x > 0) {
       speed = -speed;
-      transform.localScale = new Vector3(-1 * transform.localScale.x, transform.localScale.y, transform.localScale.z);
+    } else {
+      SpriteRenderer sprite = GetComponentInChildren<SpriteRenderer>();
+      if (sprite != null) {
+        sprite.flipX = true;
+      }
     }
   }
 
