@@ -35,10 +35,11 @@ namespace Hidden.WigglyTreeControls {
         bool startPullingSucceeded = treeController.StartPulling();
         if (!startPullingSucceeded) {
           //TODO: Play a sound to let the player know they can't pull yet
+        } else {
+          sideSwitchCounter = 0;
+          treeController.ToggleDrag(false);
+          StartCoroutine(PullCooldownRoutine(pullCooldownTime));
         }
-        sideSwitchCounter = 0;
-        treeController.ToggleDrag(false);
-        StartCoroutine(PullCooldownRoutine(pullCooldownTime));
       }
 
       if (Input.GetKeyUp(KeyCode.Space)) {

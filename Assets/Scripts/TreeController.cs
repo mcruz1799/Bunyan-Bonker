@@ -68,20 +68,14 @@ namespace Hidden.WigglyTreeControls {
         theta1 = Mathf.PI / 2;
       }
 
-      float targetX;
+      float targetAngle;
       if (initialPosition.x < 0) {
-        if (theta1 + AngleChange >= Mathf.PI - maxAngleOffset) {
-          StopPulling();
-          return false;
-        }
-        targetX = initialPosition.y / Mathf.Tan(theta1 + AngleChange);
+        targetAngle = Mathf.Min(theta1 + AngleChange, -maxAngleOffset);
       } else {
-        if (theta1 - AngleChange <= maxAngleOffset) {
-          StopPulling();
-          return false;
-        }
-        targetX = initialPosition.y / Mathf.Tan(theta1 - AngleChange);
+        targetAngle = Mathf.Max(theta1 - AngleChange, maxAngleOffset);
       }
+      Debug.Log(targetAngle * 180f / Mathf.PI);
+      float targetX = initialPosition.y / Mathf.Tan(targetAngle);
 
       float deltaXPerUnitTime = (targetX - initialX) / pullTime * angleChangeTimeIncrement;
 
