@@ -69,7 +69,7 @@ public class LevelGenerator : MonoBehaviour {
 
     if (Lives == 0) {
       State = GameState.GameOver;
-      SetActive(gameover);
+      gameover.SetActive(true);
     }
   }
 
@@ -194,6 +194,6 @@ public class LevelGenerator : MonoBehaviour {
   private static IEnumerator Level3() {
     LevelText.text = "Day 3";
     yield return SpawnEnemies(Level3Enemies);
-    SetActive(youwin);
+    youwin.SetActive(true);
   }
 }
