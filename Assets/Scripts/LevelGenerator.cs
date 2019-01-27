@@ -64,8 +64,7 @@ public class LevelGenerator : MonoBehaviour {
     }
 
     if (Lives == 0) {
-      State = GameState.GameOver;
-      gameover.SetActive(true);
+      GameOver(false);
     }
   }
 
@@ -97,6 +96,7 @@ public class LevelGenerator : MonoBehaviour {
   public void LoadOnClick()
   {
     if (State == GameState.Loading) {
+      State = GameState.InProgress;
       StartCoroutine(PlayAnimation());
       StartCoroutine(PlayGame());
     }
@@ -113,22 +113,17 @@ public class LevelGenerator : MonoBehaviour {
     }
   }
 
-  private static void GameOver() {
-    //TODO:
+  private static void GameOver(bool isWin) {
+    State = GameState.GameOver;
     Debug.Log("Game Over");
-  }
-
-  private static void Win() {
-    //TODO:
-    Debug.Log("You Win");
+    if (isWin) {
+      youwin.SetActive(true);
+    } else {
+      gameover.SetActive(true);
+    }
   }
 
   public void Retry(){
-    GameOver();
-  }
-
-  public void Replay(){
-    Win();
   }
 
   private static IEnumerator PlayGame() {
@@ -192,6 +187,6 @@ public class LevelGenerator : MonoBehaviour {
   private static IEnumerator Level3() {
     LevelText.text = "Day 3";
     yield return SpawnEnemies(Level3Enemies);
-    youwin.SetActive(true);
+    GameOver(true);
   }
 }

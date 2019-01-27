@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -270,6 +270,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5498599032967649326, guid: 379cf91f0c47a4b51a0c6770ac50502c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1898890533429286741, guid: 379cf91f0c47a4b51a0c6770ac50502c,
         type: 3}
       propertyPath: m_Name
@@ -329,11 +334,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5498599032967649326, guid: 379cf91f0c47a4b51a0c6770ac50502c,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 379cf91f0c47a4b51a0c6770ac50502c, type: 3}
@@ -1469,7 +1469,6 @@ GameObject:
   - component: {fileID: 1266343728}
   - component: {fileID: 1266343727}
   - component: {fileID: 1266343726}
-  - component: {fileID: 1266343725}
   m_Layer: 5
   m_Name: ReplayButton
   m_TagString: Untagged
@@ -1497,31 +1496,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -100}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1266343725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1266343723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d37b2b96a204fee498790aac042c1648, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _levelText: {fileID: 0}
-  _instructionalText: {fileID: 0}
-  _startButton: {fileID: 0}
-  _logo: {fileID: 0}
-  _gameover: {fileID: 0}
-  _youwin: {fileID: 0}
-  _wigglyTree: {fileID: 0}
-  _leftSpawnPosition: {x: 0, y: 0, z: 0}
-  _rightSpawnPosition: {x: 0, y: 0, z: 0}
-  _level0Enemy: {fileID: 0}
-  _level1Enemies: []
-  _level2Enemies: []
-  _level3Enemies: []
 --- !u!114 &1266343726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1562,7 +1536,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1266343725}
+      - m_Target: {fileID: 375321398}
         m_MethodName: Retry
         m_Mode: 1
         m_Arguments:
@@ -1721,7 +1695,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 299}
   m_SizeDelta: {x: 0, y: 60}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1276226585
@@ -2290,7 +2264,6 @@ GameObject:
   - component: {fileID: 1887875131}
   - component: {fileID: 1887875130}
   - component: {fileID: 1887875129}
-  - component: {fileID: 1887875128}
   m_Layer: 5
   m_Name: ReplayButton
   m_TagString: Untagged
@@ -2318,31 +2291,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -100}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1887875128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1887875126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d37b2b96a204fee498790aac042c1648, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _levelText: {fileID: 0}
-  _instructionalText: {fileID: 0}
-  _startButton: {fileID: 0}
-  _logo: {fileID: 0}
-  _gameover: {fileID: 0}
-  _youwin: {fileID: 0}
-  _wigglyTree: {fileID: 0}
-  _leftSpawnPosition: {x: 0, y: 0, z: 0}
-  _rightSpawnPosition: {x: 0, y: 0, z: 0}
-  _level0Enemy: {fileID: 0}
-  _level1Enemies: []
-  _level2Enemies: []
-  _level3Enemies: []
 --- !u!114 &1887875129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2383,8 +2331,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1887875128}
-        m_MethodName: Replay
+      - m_Target: {fileID: 375321398}
+        m_MethodName: Retry
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
