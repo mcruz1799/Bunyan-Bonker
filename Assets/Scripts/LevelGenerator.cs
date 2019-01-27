@@ -133,11 +133,7 @@ public class LevelGenerator : MonoBehaviour {
     //Remove all squirrels
     GameObject[] Animals;
     Animals = GameObject.FindGameObjectsWithTag("Animal");
-    if (Animals.Length == 0) {
-      Debug.LogError("All the animals have already left. :(");
-    } else {
-      int index = Random.Range(0, Animals.Length);
-      GameObject animal = Animals[index];
+    foreach (GameObject animal in Animals) {
       Destroy(animal);
     }
 
