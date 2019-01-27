@@ -22,11 +22,11 @@ public class BossMechanics : Enemy
         this.GetComponent<TreeDamageable>().AddOnDamagedListener(GetHit);
     }
 
-   void Update()
+   protected override void Update()
     {
         //assuming we're in the x-y plane, move in x direction
         if(moving) this.transform.Translate(new Vector3(speed, 0, 0));
-        if (speed > 0 && transform.position.x >= 0 || speed < 0 && transform.position.x <= 0) {
+        if (Mathf.Abs(transform.position.x) <= 5) {
             LevelGenerator.RemoveLife();
             SwitchSides();
         }
