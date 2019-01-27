@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1a1dce15dccf044dabed5fd4c7d0d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHp: 300
+  _maxHp: 800
 --- !u!1001 &8017194559051523623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -106,11 +106,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8562803833108830798}
     m_Modifications:
-    - target: {fileID: 4307051843461851978, guid: 1186b13be906ced4ab957b1f8969bc92,
-        type: 3}
-      propertyPath: m_Name
-      value: angrey
-      objectReference: {fileID: 0}
     - target: {fileID: 4307051843461851979, guid: 1186b13be906ced4ab957b1f8969bc92,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -165,6 +160,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4307051843461851978, guid: 1186b13be906ced4ab957b1f8969bc92,
+        type: 3}
+      propertyPath: m_Name
+      value: angrey
       objectReference: {fileID: 0}
     - target: {fileID: 4307051843461851977, guid: 1186b13be906ced4ab957b1f8969bc92,
         type: 3}
