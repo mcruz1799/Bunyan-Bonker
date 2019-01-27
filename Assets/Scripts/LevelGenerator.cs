@@ -6,6 +6,7 @@ using UnityEngine.Animations;
 
 public class LevelGenerator : MonoBehaviour {
 #pragma warning disable 0649
+  
   [SerializeField] private Text _levelText;
   [SerializeField] private Text _instructionalText;
 
@@ -49,6 +50,7 @@ public class LevelGenerator : MonoBehaviour {
   public static GameState State { get; private set; }
 
   public static int Lives { get; private set; }
+  private static float animationSpeed = .01f;
 
   public static void RemoveLife() {
     Lives -= 1;
@@ -114,7 +116,7 @@ public class LevelGenerator : MonoBehaviour {
     for (int i = 0; i < 500; i++) {
       startButton.transform.Translate(Vector3.up);
       logo.transform.Translate(Vector3.up);
-      yield return new WaitForSeconds(.01f);
+      yield return new WaitForSeconds(animationSpeed);
 
     }
   }
