@@ -83,7 +83,7 @@ public class LevelGenerator : MonoBehaviour {
   }
 
   private static void GameOver() {
-
+    //TODO
   }
 
   private static IEnumerator PlayGame() {
@@ -99,7 +99,7 @@ public class LevelGenerator : MonoBehaviour {
     Lives = numLives;
     for (int i = 1; i <= Lives; i++) {
       //TODO: Replace with random selection from animals.
-      Instantiate(Resources.Load("256px"), new Vector3(Random.Range(-4, 4), 2, 0), Quaternion.identity);
+      Instantiate(Resources.Load("256px"), new Vector3(Random.Range(-4f, 4f), 2, 0), Quaternion.identity);
     }
   }
 
@@ -123,26 +123,32 @@ public class LevelGenerator : MonoBehaviour {
   }
 
   private static IEnumerator Level0() {
-    levelText.text = "Days 0";
+    levelText.text = "Day 0";
+    instructionalText.text = instruction1;
+
     Debug.Log("Starting level 0.  Wiggle the tree enough, and an enemy will spawn.  Then, kill it to proceed.");
     yield return new WaitUntil(() => Mathf.Abs(WigglyTree.Angle) > 45f);
+
+    instructionalText.text = instruction2;
     yield return SpawnEnemies(new List<Enemy>() { Level0Enemy });
   }
 
   private static IEnumerator Level1() {
-    levelText.text = "Days 1";
+    instructionalText.text = "";
+
+    levelText.text = "Day 1";
     Debug.Log("Starting level 1");
     yield return SpawnEnemies(Level1Enemies);
   }
 
   private static IEnumerator Level2() {
-    levelText.text = "Days 2";
+    levelText.text = "Day 2";
     Debug.Log("Starting level 2");
     yield return SpawnEnemies(Level2Enemies);
   }
 
   private static IEnumerator Level3() {
-    levelText.text = "Days 3";
+    levelText.text = "Day 3";
     Debug.Log("Starting level 3");
     yield return SpawnEnemies(Level3Enemies);
   }
