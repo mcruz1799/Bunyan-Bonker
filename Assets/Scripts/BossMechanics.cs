@@ -6,6 +6,8 @@ public class BossMechanics : Enemy {
   Vector3 startPos;
   public Transform bullet;
   public Transform poofFX;
+  [SerializeField] protected AudioClip hitSound;
+  [SerializeField] protected AudioClip deathSound;
   public int bulletMax = 1;
   int hitcount = 0;
   bool moving = true;
@@ -13,7 +15,6 @@ public class BossMechanics : Enemy {
 
   public int hitMax = 2;
   protected override void Start() {
-    speed = 0.01f;
     base.Start();
 
     startPos = transform.position;
@@ -23,7 +24,7 @@ public class BossMechanics : Enemy {
   protected override void Update() {
     if (LevelGenerator.State == LevelGenerator.GameState.InProgress) {
       if (moving) {
-        transform.Translate(new Vector3(speed, 0, 0));
+        transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
       }
 
       if (Mathf.Abs(transform.position.x) <= 5) {
@@ -31,20 +32,31 @@ public class BossMechanics : Enemy {
         SwitchSides();
       }
     } else if (LevelGenerator.State == LevelGenerator.GameState.GameOver) {
+            SoundManager.Instance.Play(deathSound);
       OnDeath();
     }
   }
 
   public void SwitchSides() {
     //move to opposite side [animation?]
+    SpriteRenderer sprite = GetComponentInChildren<SpriteRenderer>();
+    sprite.flipX = !sprite.flipX;
     Instantiate(poofFX, transform.position, transform.rotation);
+    StartCoroutine(moveAway());
+  }
+  IEnumerator moveAway(){
+    this.GetComponentInChildren<SpriteRenderer>().enabled = false;
     transform.position = new Vector3(startPos.x * -1, startPos.y, startPos.z);
+    yield return new WaitForSeconds(1);
     Instantiate(poofFX, transform.position, transform.rotation);
+    yield return new WaitForSeconds(1);
+    this.GetComponentInChildren<SpriteRenderer>().enabled = true;
     speed = -speed;
     startPos = new Vector3(startPos.x * -1, startPos.y, startPos.z);
   }
 
   private void GetHit() {
+    SoundManager.Instance.Play(hitSound);
     SwitchSides();
     if (speed < 0) speed -= 0.01f;
     else speed += 0.005f;
@@ -77,6 +89,14 @@ public class BossMechanics : Enemy {
     isShooting = false;
     moving = true;
     yield return new WaitForSeconds(0);
+  }
+
+  protected override void OnDeath()
+  {
+    SoundManager.Instance.Play(deathSound);
+    Instantiate(deathFX, transform.position, transform.rotation);
+    LevelGenerator.NotifyEnemyDied();
+    Destroy(gameObject);
   }
 
   //when tree hits boss, switch sides + up speed

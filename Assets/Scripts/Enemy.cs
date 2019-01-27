@@ -8,10 +8,19 @@ public class Enemy : MonoBehaviour {
   [SerializeField] protected float speed;
   [SerializeField] protected Transform deathFX;
 #pragma warning restore 0649
+  [SerializeField] protected AudioClip deathSound1;
+  [SerializeField] protected AudioClip deathSound2;
 
   protected virtual void Start() {
     GetComponent<TreeDamageable>().SetOnDeathBehavior(OnDeath);
-    if (transform.position.x > 0) speed = -speed;
+    if (transform.position.x > 0) {
+      speed = -speed;
+    } else {
+      SpriteRenderer sprite = GetComponentInChildren<SpriteRenderer>();
+      if (sprite != null) {
+        sprite.flipX = true;
+      }
+    }
   }
 
   protected virtual void Update() {
@@ -20,7 +29,6 @@ public class Enemy : MonoBehaviour {
 
       //Stop moving once we reach the tree trunk (at position x=0)
       if (Mathf.Abs(transform.position.x) <= 5) {
-        transform.position = new Vector3(0, transform.position.y, transform.position.z);
         speed = 0;
         LevelGenerator.RemoveLife();
         OnDeath();
@@ -31,7 +39,8 @@ public class Enemy : MonoBehaviour {
   }
 
   protected virtual void OnDeath() {
-    Instantiate(deathFX);
+    SoundManager.Instance.RandomSoundEffect(deathSound1, deathSound2);
+    Instantiate(deathFX, transform.position, transform.rotation);
     LevelGenerator.NotifyEnemyDied();
     Destroy(gameObject);
   }
