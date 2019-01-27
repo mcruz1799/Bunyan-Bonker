@@ -20,7 +20,6 @@ public class Enemy : MonoBehaviour {
 
       //Stop moving once we reach the tree trunk (at position x=0)
       if (Mathf.Abs(transform.position.x) <= 5) {
-        transform.position = new Vector3(0, transform.position.y, transform.position.z);
         speed = 0;
         LevelGenerator.RemoveLife();
         OnDeath();
