@@ -126,7 +126,6 @@ public class LevelGenerator : MonoBehaviour {
     levelText.text = "Day 0";
     instructionalText.text = instruction1;
 
-    Debug.Log("Starting level 0.  Wiggle the tree enough, and an enemy will spawn.  Then, kill it to proceed.");
     yield return new WaitUntil(() => Mathf.Abs(WigglyTree.Angle) > 45f);
 
     instructionalText.text = instruction2;
@@ -137,19 +136,16 @@ public class LevelGenerator : MonoBehaviour {
     instructionalText.text = "";
 
     levelText.text = "Day 1";
-    Debug.Log("Starting level 1");
     yield return SpawnEnemies(Level1Enemies);
   }
 
   private static IEnumerator Level2() {
     levelText.text = "Day 2";
-    Debug.Log("Starting level 2");
     yield return SpawnEnemies(Level2Enemies);
   }
 
   private static IEnumerator Level3() {
     levelText.text = "Day 3";
-    Debug.Log("Starting level 3");
     yield return SpawnEnemies(Level3Enemies);
   }
 }
