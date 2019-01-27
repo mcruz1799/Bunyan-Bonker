@@ -109,6 +109,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void GameOver()
+    {
+        levelText.text = "The Bunyans chopped you down!";
+    }
+
     //Adds Animals representing the Lives.
     void addLives()
     {
