@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -289,6 +289,7 @@ GameObject:
   - component: {fileID: 534669905}
   - component: {fileID: 534669904}
   - component: {fileID: 534669903}
+  - component: {fileID: 534669906}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -360,6 +361,102 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &534669906
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: daf33ef7fb473d243aacb86062d8c0b4, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &794974853
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,7 +481,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 794974853}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15, y: 1.5, z: 0}
+  m_LocalPosition: {x: -15, y: 3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -749,7 +846,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684704744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -767,12 +864,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9a53148f85a24cf9be0f22fd2c6a94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 4835815621768737854, guid: 80cea960ec7dc2444af34acc924432c4, type: 3}
+  enemy: {fileID: 1333015997737182363, guid: 5f92a3a0abdf5ae45af159e46c3fa62e, type: 3}
   leftSpawnTransform: {fileID: 794974854}
   rightSpawnTransform: {fileID: 2121881296}
   spawnProbability: 2
   failMax: 3
   spawnDelay: 2
+  spawnInterval: 1
   pauseDelay: 3
 --- !u!1 &2028614260
 GameObject:
@@ -897,7 +995,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2121881295}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15, y: 1.5, z: 0}
+  m_LocalPosition: {x: 15, y: 3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -914,11 +1012,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafeZone
-      objectReference: {fileID: 0}
-    - target: {fileID: 534112735878030437, guid: 51e112767377c9b4785e6617d8fb5136,
-        type: 3}
-      propertyPath: m_TagString
-      value: Border
       objectReference: {fileID: 0}
     - target: {fileID: 6516871256684567000, guid: 51e112767377c9b4785e6617d8fb5136,
         type: 3}
@@ -975,6 +1068,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3389792688422005282, guid: 51e112767377c9b4785e6617d8fb5136,
+        type: 3}
+      propertyPath: m_TagString
+      value: Border
+      objectReference: {fileID: 0}
     - target: {fileID: 534112735878030439, guid: 51e112767377c9b4785e6617d8fb5136,
         type: 3}
       propertyPath: m_LocalScale.z
@@ -985,16 +1083,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -5
       objectReference: {fileID: 0}
-    - target: {fileID: 534112735878030438, guid: 51e112767377c9b4785e6617d8fb5136,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 3389792688422005282, guid: 51e112767377c9b4785e6617d8fb5136,
-        type: 3}
-      propertyPath: m_TagString
-      value: Border
-      objectReference: {fileID: 0}
     - target: {fileID: 3389792688422005280, guid: 51e112767377c9b4785e6617d8fb5136,
         type: 3}
       propertyPath: m_LocalScale.z
@@ -1004,6 +1092,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 534112735878030437, guid: 51e112767377c9b4785e6617d8fb5136,
+        type: 3}
+      propertyPath: m_TagString
+      value: Border
+      objectReference: {fileID: 0}
+    - target: {fileID: 534112735878030438, guid: 51e112767377c9b4785e6617d8fb5136,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3389792688422005281, guid: 51e112767377c9b4785e6617d8fb5136,
         type: 3}
