@@ -25,9 +25,14 @@ public interface IWigglyTree {
 
 public class WigglyTree : MonoBehaviour, IWigglyTree {
   private GameController gameController;
+  public static List<string> enemies;
 
   private void Awake() {
     gameController = GetComponent<GameController>();
+    enemies = new List<string>();
+    //add types of enemy tags here
+    enemies.Add("lumberjack");
+    enemies.Add("Enemy");
   }
 
   public float Speed => gameController.Speed;
