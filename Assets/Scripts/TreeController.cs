@@ -74,7 +74,6 @@ namespace Hidden.WigglyTreeControls {
       } else {
         targetAngle = Mathf.Max(theta1 - AngleChange, maxAngleOffset);
       }
-      Debug.Log(targetAngle * 180f / Mathf.PI);
       float targetX = initialPosition.y / Mathf.Tan(targetAngle);
 
       float deltaXPerUnitTime = (targetX - initialX) / pullTime * angleChangeTimeIncrement;
