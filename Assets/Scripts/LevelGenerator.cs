@@ -24,6 +24,7 @@ public class LevelGenerator : MonoBehaviour {
   [SerializeField] private List<Enemy> _level1Enemies;
   [SerializeField] private List<Enemy> _level2Enemies;
   [SerializeField] private List<Enemy> _level3Enemies;
+  [SerializeField] private float _animationSpeed;
 #pragma warning restore 0649
 
   private static Text LevelText { get; set; }
@@ -102,6 +103,7 @@ public class LevelGenerator : MonoBehaviour {
 
     LevelText = _levelText;
     InstructionalText = _instructionalText;
+    animationSpeed = _animationSpeed;
 
     startButton = _startButton;
     logo = _logo;
