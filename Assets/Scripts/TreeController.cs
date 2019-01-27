@@ -32,9 +32,10 @@ namespace Hidden.WigglyTreeControls {
       get {
         Vector3 currentPosition = treeSlingshot.SpringObj.position;
         if (currentPosition.x == 0) {
-          return 90f;
+          return 0f;
         }
-        return Mathf.Atan(currentPosition.y / currentPosition.x) * 180 / Mathf.PI;
+        float angle = Mathf.Atan(currentPosition.y / currentPosition.x) * 180 / Mathf.PI;
+        return System.Math.Sign(angle) * (90 - Mathf.Abs(angle));
       }
     }
 
