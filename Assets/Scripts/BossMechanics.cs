@@ -13,7 +13,7 @@ public class BossMechanics : Enemy
     bool isShooting = false;
 
     public int hitMax = 2;
-    void Start()
+    protected override void Start()
     {
         startPos = transform.position;
         GetComponent<TreeDamageable>().SetOnDeathBehavior(() => OnDeath());
