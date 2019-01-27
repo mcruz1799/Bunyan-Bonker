@@ -116,9 +116,9 @@ public class LevelGenerator : MonoBehaviour {
 
   private static IEnumerator PlayAnimation() {
     for (int i = 0; i < 500; i++) {
-      startButton.transform.Translate(Vector3.up);
-      logo.transform.Translate(Vector3.up);
-      yield return new WaitForSeconds(animationSpeed);
+      startButton.transform.Translate(Vector3.up * animationSpeed);
+      logo.transform.Translate(Vector3.up * animationSpeed);
+      yield return new WaitForSeconds(0);
 
     }
   }

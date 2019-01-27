@@ -170,6 +170,7 @@ MonoBehaviour:
   - {fileID: 4143273928349957925, guid: a6205f2a0992a254782fa0b9bb0bfb11, type: 3}
   _level3Enemies:
   - {fileID: 8562803833108830799, guid: b924415129cd44546b8a246059fb5bed, type: 3}
+  _animationSpeed: 2.75
 --- !u!4 &375321399
 Transform:
   m_ObjectHideFlags: 0
