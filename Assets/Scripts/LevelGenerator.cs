@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelGenerator : MonoBehaviour {
 #pragma warning disable 0649
@@ -24,7 +25,20 @@ public class LevelGenerator : MonoBehaviour {
   private static List<Enemy> Level2Enemies { get; set; }
   private static List<Enemy> Level3Enemies { get; set; }
 
+  public enum GameState { InProgress, GameOver }
+
+  public static GameState State { get; private set; }
+
   public static int Lives { get; private set; }
+  [SerializeField] private Text _levelText;
+  [SerializeField] private Text _instructionalText;
+
+  private static Text levelText { get; set; }
+  private static Text instructionalText { get; set; }
+  private static string instruction1 = "Press and hold the spacebar to wiggle!";
+  private static string instruction2 = "The Bunyans are coming! Protect you and your furry friends!";
+
+
 
   public static void RemoveLife() {
     Lives -= 1;
@@ -32,11 +46,15 @@ public class LevelGenerator : MonoBehaviour {
     GameObject[] Animals;
     Animals = GameObject.FindGameObjectsWithTag("Animal");
     if (Animals.Length == 0) {
-      Debug.Log("All the animals have already left. :(");
+      Debug.LogError("All the animals have already left. :(");
     } else {
       int index = Random.Range(0, Animals.Length);
       GameObject animal = Animals[index];
       Destroy(animal);
+    }
+
+    if (Lives == 0) {
+      State = GameState.GameOver;
     }
   }
 
@@ -52,36 +70,29 @@ public class LevelGenerator : MonoBehaviour {
     Level0Enemy = _level0Enemy;
     Level1Enemies = _level1Enemies;
     Level2Enemies = _level2Enemies;
-    Level2Enemies = _level3Enemies;
+    Level3Enemies = _level3Enemies;
+
+    levelText = _levelText;
+    instructionalText = _instructionalText;
+
+    levelText = GameObject.Find("LevelText").GetComponent<Text>();
   }
 
   private void Start() {
     StartCoroutine(PlayGame());
   }
 
+  private static void GameOver() {
+
+  }
+
   private static IEnumerator PlayGame() {
+    State = GameState.InProgress;
     InitLives(5);
     yield return Level0();
     yield return Level1();
     yield return Level2();
     yield return Level3();
-  }
-
-  private static IEnumerator Level0() {
-    yield return new WaitUntil(() => Mathf.Abs(WigglyTree.Angle) > 45f);
-    yield return SpawnEnemies(new List<Enemy>() { Level0Enemy });
-  }
-
-  private static IEnumerator Level1() {
-    yield return SpawnEnemies(Level1Enemies);
-  }
-
-  private static IEnumerator Level2() {
-    yield return SpawnEnemies(Level2Enemies);
-  }
-
-  private static IEnumerator Level3() {
-    yield return SpawnEnemies(Level3Enemies);
   }
 
   private static void InitLives(int numLives) {
@@ -109,5 +120,30 @@ public class LevelGenerator : MonoBehaviour {
       yield return new WaitUntil(() => enemyDiedFlag);
       enemyDiedFlag = false;
     }
+  }
+
+  private static IEnumerator Level0() {
+    levelText.text = "Days 0";
+    Debug.Log("Starting level 0.  Wiggle the tree enough, and an enemy will spawn.  Then, kill it to proceed.");
+    yield return new WaitUntil(() => Mathf.Abs(WigglyTree.Angle) > 45f);
+    yield return SpawnEnemies(new List<Enemy>() { Level0Enemy });
+  }
+
+  private static IEnumerator Level1() {
+    levelText.text = "Days 1";
+    Debug.Log("Starting level 1");
+    yield return SpawnEnemies(Level1Enemies);
+  }
+
+  private static IEnumerator Level2() {
+    levelText.text = "Days 2";
+    Debug.Log("Starting level 2");
+    yield return SpawnEnemies(Level2Enemies);
+  }
+
+  private static IEnumerator Level3() {
+    levelText.text = "Days 3";
+    Debug.Log("Starting level 3");
+    yield return SpawnEnemies(Level3Enemies);
   }
 }

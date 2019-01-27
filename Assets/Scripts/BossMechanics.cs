@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossMechanics : MonoBehaviour
+public class BossMechanics : Enemy
 {
     public float movGen = 0.01f;
-    float speed = 0.02f;
     Vector3 startPos;
     public Transform bullet;
     public int bulletMax = 1;
@@ -17,7 +16,7 @@ public class BossMechanics : MonoBehaviour
     void Start()
     {
         startPos = transform.position;
-        GetComponent<TreeDamageable>().SetOnDeathBehavior(() => Win());
+        GetComponent<TreeDamageable>().SetOnDeathBehavior(() => OnDeath());
         speed = movGen;
         if(this.transform.position.x > 0) speed = -speed;
         this.GetComponent<TreeDamageable>().AddOnDamagedListener(GetHit);
@@ -27,6 +26,10 @@ public class BossMechanics : MonoBehaviour
     {
         //assuming we're in the x-y plane, move in x direction
         if(moving) this.transform.Translate(new Vector3(speed, 0, 0));
+        if (speed > 0 && transform.position.x >= 0 || speed < 0 && transform.position.x <= 0) {
+            LevelGenerator.RemoveLife();
+            SwitchSides();
+        }
     }
 
     public void SwitchSides(){
@@ -71,12 +74,6 @@ public class BossMechanics : MonoBehaviour
         isShooting = false;
         moving = true;
         yield return new WaitForSeconds(0);
-    }
-
-    void Win(){
-        //do win UI stuff
-        Debug.Log("YOU WON");
-        Destroy(gameObject);
     }
 
     //when boss dies, you win screen

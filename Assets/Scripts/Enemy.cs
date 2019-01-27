@@ -5,15 +5,15 @@ using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour {
 #pragma warning disable 0649
-  [SerializeField] private float speed;
+  [SerializeField] protected float speed;
 #pragma warning restore 0649
 
-  private void Start() {
+  protected virtual void Start() {
     GetComponent<TreeDamageable>().SetOnDeathBehavior(OnDeath);
     if (transform.position.x > 0) speed = -speed;
   }
 
-  private void Update() {
+  protected virtual void Update() {
     transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
 
     //Stop moving once we reach the tree trunk (at position x=0)
@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour {
     }
   }
 
-  private void OnDeath() {
+  protected virtual void OnDeath() {
     LevelGenerator.NotifyEnemyDied();
     Destroy(gameObject);
   }
