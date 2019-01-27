@@ -13,7 +13,6 @@ public class BossMechanics : Enemy {
 
   public int hitMax = 2;
   protected override void Start() {
-    speed = 0.01f;
     base.Start();
 
     startPos = transform.position;
@@ -23,7 +22,7 @@ public class BossMechanics : Enemy {
   protected override void Update() {
     if (LevelGenerator.State == LevelGenerator.GameState.InProgress) {
       if (moving) {
-        transform.Translate(new Vector3(speed, 0, 0));
+        transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
       }
 
       if (Mathf.Abs(transform.position.x) <= 5) {
@@ -38,8 +37,15 @@ public class BossMechanics : Enemy {
   public void SwitchSides() {
     //move to opposite side [animation?]
     Instantiate(poofFX, transform.position, transform.rotation);
+    StartCoroutine(moveAway());
+  }
+  IEnumerator moveAway(){
+    this.GetComponentInChildren<SpriteRenderer>().enabled = false;
     transform.position = new Vector3(startPos.x * -1, startPos.y, startPos.z);
+    yield return new WaitForSeconds(1);
     Instantiate(poofFX, transform.position, transform.rotation);
+    yield return new WaitForSeconds(1);
+    this.GetComponentInChildren<SpriteRenderer>().enabled = true;
     speed = -speed;
     startPos = new Vector3(startPos.x * -1, startPos.y, startPos.z);
   }

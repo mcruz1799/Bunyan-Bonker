@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a8bbd31bff3c447b75b11b0b8b7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 2
   deathFX: {fileID: 5950512789192954698, guid: 5ccd1d462400e8d4aa8a30537504b6fb, type: 3}
   bullet: {fileID: 1554304394985629927, guid: 54c6a6a7d3878b74bad03578efa1fd83, type: 3}
   poofFX: {fileID: 2034251898713175422, guid: 6977ae6e472e52b4897354c5ac415bda, type: 3}
@@ -102,11 +102,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8562803833108830798}
     m_Modifications:
-    - target: {fileID: 4307051843461851978, guid: 1186b13be906ced4ab957b1f8969bc92,
-        type: 3}
-      propertyPath: m_Name
-      value: angrey
-      objectReference: {fileID: 0}
     - target: {fileID: 4307051843461851979, guid: 1186b13be906ced4ab957b1f8969bc92,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -161,6 +156,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4307051843461851978, guid: 1186b13be906ced4ab957b1f8969bc92,
+        type: 3}
+      propertyPath: m_Name
+      value: angrey
       objectReference: {fileID: 0}
     - target: {fileID: 4307051843461851977, guid: 1186b13be906ced4ab957b1f8969bc92,
         type: 3}
