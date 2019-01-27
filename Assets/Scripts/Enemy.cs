@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour {
   }
 
   protected virtual void OnDeath() {
-    Instantiate(deathFX);
+    Instantiate(deathFX, transform.position, transform.rotation);
     LevelGenerator.NotifyEnemyDied();
     Destroy(gameObject);
   }
