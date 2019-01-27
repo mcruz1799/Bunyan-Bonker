@@ -96,18 +96,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1115954016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7374922604466530091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc8614f9c2153a5418835a43b2f6f4e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1967273403693668484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -118,7 +106,7 @@ PrefabInstance:
     - target: {fileID: 9013345199229108143, guid: 02ceca8156b5f974d82079acfd504d66,
         type: 3}
       propertyPath: m_Name
-      value: WigglyTree
+      value: WigglyTree Variant
       objectReference: {fileID: 0}
     - target: {fileID: 9013345199229108138, guid: 02ceca8156b5f974d82079acfd504d66,
         type: 3}
