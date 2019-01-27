@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class BossMechanics : MonoBehaviour
 {
-    public float movGen = 0.02f;
+    public float movGen = 0.01f;
     float speed = 0.02f;
     Vector3 startPos;
     public Transform bullet;
+    public int bulletMax = 1;
     int hitcount = 0;
     bool moving = true;
     bool isShooting = false;
@@ -17,7 +18,7 @@ public class BossMechanics : MonoBehaviour
     {
         startPos = transform.position;
         GetComponent<TreeDamageable>().SetOnDeathBehavior(() => Destroy(gameObject));
-        speed = movGen; //* level;
+        speed = movGen;
         if(this.transform.position.x > 0) speed = -speed;
         this.GetComponent<TreeDamageable>().AddOnDamagedListener(GetHit);
     }
@@ -25,7 +26,7 @@ public class BossMechanics : MonoBehaviour
    void Update()
     {
         //assuming we're in the x-y plane, move in x direction
-        this.transform.Translate(new Vector3(speed, 0, 0));
+        if(moving) this.transform.Translate(new Vector3(speed, 0, 0));
     }
 
     public void SwitchSides(){
@@ -39,7 +40,7 @@ public class BossMechanics : MonoBehaviour
     void GetHit(){
         SwitchSides();
         if (speed < 0) speed -= 0.01f;
-        else speed += 0.01f;
+        else speed += 0.005f;
         hitcount++;
         if (hitcount > hitMax && !isShooting) {
             StartCoroutine("ShootBullets");
@@ -51,16 +52,28 @@ public class BossMechanics : MonoBehaviour
     IEnumerator ShootBullets(){
         int count = 0;
         while (true){
-            Transform shot = Instantiate(bullet, new Vector3
-                (transform.position.x + 1, transform.position.y, 
-                    transform.position.z), transform.rotation);
-            shot.transform.parent = this.transform;
-            yield return new WaitForSeconds(3);
+            if (count < bulletMax) {
+                Vector3 pos;
+                if (transform.position.x > 0) pos = new Vector3
+                    (transform.position.x - 1, transform.position.y, 
+                        transform.position.z); 
+                else pos = new Vector3(transform.position.x + 1, 
+                    transform.position.y, transform.position.z);
+                Transform shot = Instantiate(bullet, pos, transform.rotation);
+                shot.transform.parent = this.transform;
+                count++;
+                yield return new WaitForSeconds(3);
+            }
+            else{
+                break;
+            }
         }
+        isShooting = false;
+        moving = true;
         yield return new WaitForSeconds(0);
     }
 
-    //when boss dies, you win screen
+    //TODO: when boss dies, you win screen
     //when tree hits boss, switch sides + up speed
     //when boss hits tree, switch sides
 }
