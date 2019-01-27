@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -437,8 +437,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 124bbba9cc344bb46bf1190a5e69d45a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wigglyTree: {fileID: 0}
+  wigglyTree: {fileID: 1725580694}
   enemy: {fileID: 2071008413}
+  instruction1: Press and hold the spacebar to wiggle!
+  instruction2: The Bunyans are coming! Protect you and your furry friends!
 --- !u!4 &706249691
 Transform:
   m_ObjectHideFlags: 0
@@ -464,6 +466,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SafeZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 534112735878030437, guid: 51e112767377c9b4785e6617d8fb5136,
+        type: 3}
+      propertyPath: m_TagString
+      value: Border
       objectReference: {fileID: 0}
     - target: {fileID: 6516871256684567000, guid: 51e112767377c9b4785e6617d8fb5136,
         type: 3}
@@ -520,11 +527,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3389792688422005282, guid: 51e112767377c9b4785e6617d8fb5136,
-        type: 3}
-      propertyPath: m_TagString
-      value: Border
-      objectReference: {fileID: 0}
     - target: {fileID: 534112735878030439, guid: 51e112767377c9b4785e6617d8fb5136,
         type: 3}
       propertyPath: m_LocalScale.z
@@ -535,6 +537,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -5
       objectReference: {fileID: 0}
+    - target: {fileID: 534112735878030438, guid: 51e112767377c9b4785e6617d8fb5136,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3389792688422005282, guid: 51e112767377c9b4785e6617d8fb5136,
+        type: 3}
+      propertyPath: m_TagString
+      value: Border
+      objectReference: {fileID: 0}
     - target: {fileID: 3389792688422005280, guid: 51e112767377c9b4785e6617d8fb5136,
         type: 3}
       propertyPath: m_LocalScale.z
@@ -544,16 +556,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 534112735878030437, guid: 51e112767377c9b4785e6617d8fb5136,
-        type: 3}
-      propertyPath: m_TagString
-      value: Border
-      objectReference: {fileID: 0}
-    - target: {fileID: 534112735878030438, guid: 51e112767377c9b4785e6617d8fb5136,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3389792688422005281, guid: 51e112767377c9b4785e6617d8fb5136,
         type: 3}
@@ -709,10 +711,10 @@ RectTransform:
   m_Father: {fileID: 478439654}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 45}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1454245838
 MonoBehaviour:
@@ -736,14 +738,14 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 9de879fe5ec4f4ca2a7804bfeefd2138, type: 3}
-    m_FontSize: 24
+    m_FontSize: 20
     m_FontStyle: 0
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 1
+    m_Alignment: 4
     m_AlignByGeometry: 0
-    m_RichText: 1
+    m_RichText: 0
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
@@ -967,6 +969,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02ceca8156b5f974d82079acfd504d66, type: 3}
+--- !u!114 &1725580694 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5166077992546413582, guid: 02ceca8156b5f974d82079acfd504d66,
+    type: 3}
+  m_PrefabInstance: {fileID: 1725580693}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c3ca6ec12eaac24ead6987f9f3ed879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2071008412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1038,6 +1052,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015948281324195194, guid: 80cea960ec7dc2444af34acc924432c4,
+        type: 3}
+      propertyPath: movGen
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80cea960ec7dc2444af34acc924432c4, type: 3}

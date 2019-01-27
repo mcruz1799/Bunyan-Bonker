@@ -11,7 +11,8 @@ public class EnemySpawner : MonoBehaviour
     public float spawnProbability = 2.0f;
     private int failCounter = 0;
     public int failMax = 5;
-    public float spawnDelay = 1.0f; //time interval for coroutine
+    public float spawnDelay = 4.0f;
+    public float spawnInterval = 1.0f; //time interval for coroutine
     public float pauseDelay = 1.0f; //time after a spawn to reactivate spawning
     private bool pause = false;
     private float pauseTime = 0.0f;
@@ -26,6 +27,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
     public IEnumerator Spawn(){
+        yield return new WaitForSeconds(spawnDelay);
         while(true){
             if (Time.time - pauseTime >= pauseDelay) pause = false;
             if (!pause){
@@ -53,7 +55,7 @@ public class EnemySpawner : MonoBehaviour
                 }
                 failCheck();
             }
-            yield return new WaitForSeconds(spawnDelay);
+            yield return new WaitForSeconds(spawnInterval);
         }
     }
     void SpawnLeft(){

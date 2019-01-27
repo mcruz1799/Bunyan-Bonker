@@ -27,7 +27,7 @@ namespace Hidden.WigglyTreeControls {
     }
 
     private int sideSwitchCounter;
-    private int switchesBeforeDragKicksIn = 4;
+    private int switchesBeforeDragKicksIn = 2;
     private int xVelocityDirection = 0;
     private void Update() {
       //Pull/release the tree by pushing/releasing the space bar

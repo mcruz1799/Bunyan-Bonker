@@ -19,7 +19,7 @@ namespace Hidden.WigglyTreeControls {
     private Rigidbody SpringRB;
 #pragma warning restore 0649
 
-    private float Drag { get { return springForce / 20f; } }
+    private float Drag { get { return springForce / 5f; } }
 
     private Vector3 localDistance; //Distance between the two points
     private Vector3 localVelocity; //Velocity converted to local space
