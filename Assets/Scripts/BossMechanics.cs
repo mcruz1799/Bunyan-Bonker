@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossMechanics : Enemy {
   Vector3 startPos;
   public Transform bullet;
+  public Transform poofFX;
   public int bulletMax = 1;
   int hitcount = 0;
   bool moving = true;
@@ -36,7 +37,9 @@ public class BossMechanics : Enemy {
 
   public void SwitchSides() {
     //move to opposite side [animation?]
+    Instantiate(poofFX, transform.position, transform.rotation);
     transform.position = new Vector3(startPos.x * -1, startPos.y, startPos.z);
+    Instantiate(poofFX, transform.position, transform.rotation);
     speed = -speed;
     startPos = new Vector3(startPos.x * -1, startPos.y, startPos.z);
   }

@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  deathFX: {fileID: 5290492859723838759, guid: 6977ae6e472e52b4897354c5ac415bda, type: 3}
 --- !u!114 &6936574496367661384
 MonoBehaviour:
   m_ObjectHideFlags: 0

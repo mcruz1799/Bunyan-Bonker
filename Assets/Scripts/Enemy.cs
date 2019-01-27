@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class Enemy : MonoBehaviour {
 #pragma warning disable 0649
   [SerializeField] protected float speed;
+  [SerializeField] protected Transform deathFX;
 #pragma warning restore 0649
 
   protected virtual void Start() {
@@ -30,6 +31,7 @@ public class Enemy : MonoBehaviour {
   }
 
   protected virtual void OnDeath() {
+    Instantiate(deathFX);
     LevelGenerator.NotifyEnemyDied();
     Destroy(gameObject);
   }
