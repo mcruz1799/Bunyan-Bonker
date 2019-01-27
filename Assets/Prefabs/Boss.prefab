@@ -48,9 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  deathFX: {fileID: 0}
+  deathFX: {fileID: 5950512789192954698, guid: 5ccd1d462400e8d4aa8a30537504b6fb, type: 3}
   bullet: {fileID: 1554304394985629927, guid: 54c6a6a7d3878b74bad03578efa1fd83, type: 3}
-  poofFX: {fileID: 0}
+  poofFX: {fileID: 2034251898713175422, guid: 6977ae6e472e52b4897354c5ac415bda, type: 3}
   bulletMax: 1
   hitMax: 2
 --- !u!54 &8562803833108830794
