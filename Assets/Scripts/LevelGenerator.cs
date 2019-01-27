@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour {
+#pragma warning disable 0649
   [SerializeField] private WigglyTree _wigglyTree;
   [SerializeField] private Vector3 _leftSpawnPosition;
   [SerializeField] private Vector3 _rightSpawnPosition;
@@ -12,6 +13,7 @@ public class LevelGenerator : MonoBehaviour {
   [SerializeField] private List<Enemy> _level1Enemies;
   [SerializeField] private List<Enemy> _level2Enemies;
   [SerializeField] private List<Enemy> _level3Enemies;
+#pragma warning restore 0649
 
   private static WigglyTree WigglyTree { get; set; }
   private static Vector3 LeftSpawnPosition { get; set; }

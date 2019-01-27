@@ -142,8 +142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wigglyTree: {fileID: 1262662970}
-  _leftSpawnPosition: {x: -20, y: 0, z: 0}
-  _rightSpawnPosition: {x: 20, y: 0, z: 0}
+  _leftSpawnPosition: {x: -20, y: 1.8, z: 0}
+  _rightSpawnPosition: {x: 20, y: 1.8, z: 0}
   _level0Enemy: {fileID: 3872174613950027580, guid: f9bcada1352e9c1429ee76ee40c58dfb,
     type: 3}
   _level1Enemies:
@@ -434,6 +434,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206758221096924649, guid: 02ceca8156b5f974d82079acfd504d66,
+        type: 3}
+      propertyPath: _angleChange
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02ceca8156b5f974d82079acfd504d66, type: 3}

@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour {
+#pragma warning disable 0649
   [SerializeField] private float speed;
+#pragma warning restore 0649
 
   private void Start() {
     GetComponent<TreeDamageable>().SetOnDeathBehavior(OnDeath);
