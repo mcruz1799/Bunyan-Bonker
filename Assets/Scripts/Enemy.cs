@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour {
   [SerializeField] protected float speed;
   [SerializeField] protected Transform deathFX;
 #pragma warning restore 0649
+  [SerializeField] protected AudioClip deathSound1;
+  [SerializeField] protected AudioClip deathSound2;
 
   protected virtual void Start() {
     GetComponent<TreeDamageable>().SetOnDeathBehavior(OnDeath);
@@ -30,6 +32,7 @@ public class Enemy : MonoBehaviour {
   }
 
   protected virtual void OnDeath() {
+    SoundManager.Instance.RandomSoundEffect(deathSound1, deathSound2);
     Instantiate(deathFX, transform.position, transform.rotation);
     LevelGenerator.NotifyEnemyDied();
     Destroy(gameObject);
