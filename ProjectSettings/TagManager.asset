@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Floor
+  - Enemy
+  - Border
+  - Animal
   layers:
   - Default
   - TransparentFX
@@ -40,4 +44,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 260397419
+    locked: 0
+  - name: Foreground
+    uniqueID: 1925662391
+    locked: 0
+  - name: Characters
+    uniqueID: 3150140809
     locked: 0
