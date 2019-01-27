@@ -6,6 +6,8 @@ public class BossMechanics : Enemy {
   Vector3 startPos;
   public Transform bullet;
   public Transform poofFX;
+  [SerializeField] protected AudioClip hitSound;
+  [SerializeField] protected AudioClip deathSound;
   public int bulletMax = 1;
   int hitcount = 0;
   bool moving = true;
@@ -30,6 +32,7 @@ public class BossMechanics : Enemy {
         SwitchSides();
       }
     } else if (LevelGenerator.State == LevelGenerator.GameState.GameOver) {
+            SoundManager.Instance.Play(deathSound);
       OnDeath();
     }
   }
@@ -51,6 +54,7 @@ public class BossMechanics : Enemy {
   }
 
   private void GetHit() {
+    SoundManager.Instance.Play(hitSound);
     SwitchSides();
     if (speed < 0) speed -= 0.01f;
     else speed += 0.005f;
@@ -83,6 +87,14 @@ public class BossMechanics : Enemy {
     isShooting = false;
     moving = true;
     yield return new WaitForSeconds(0);
+  }
+
+  protected override void OnDeath()
+  {
+    SoundManager.Instance.Play(deathSound);
+    Instantiate(deathFX, transform.position, transform.rotation);
+    LevelGenerator.NotifyEnemyDied();
+    Destroy(gameObject);
   }
 
   //when tree hits boss, switch sides + up speed
