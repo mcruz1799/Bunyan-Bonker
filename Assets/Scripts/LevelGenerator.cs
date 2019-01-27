@@ -17,7 +17,7 @@ public class LevelGenerator : MonoBehaviour {
   [SerializeField] private WigglyTree _wigglyTree;
   [SerializeField] private Vector3 _leftSpawnPosition;
   [SerializeField] private Vector3 _rightSpawnPosition;
-  
+
   [Space(12)]
   [SerializeField] private Enemy _level0Enemy;
   [SerializeField] private List<Enemy> _level1Enemies;
@@ -69,7 +69,23 @@ public class LevelGenerator : MonoBehaviour {
   }
 
   public static void NotifyEnemyDied() {
-    enemyDiedFlag += 1;
+    if (State == GameState.InProgress) {
+      enemyDiedFlag += 1;
+    }
+  }
+
+  public void LoadOnClick() {
+    if (State == GameState.Loading) {
+      State = GameState.InProgress;
+      StartCoroutine(PlayAnimation());
+      StartCoroutine(PlayGame());
+    }
+  }
+
+  public void Retry() {
+    StartCoroutine(PlayGame(skipTutorial: true));
+
+    Debug.Log("Retry isn't implemented");
   }
 
   private void Awake() {
@@ -93,21 +109,11 @@ public class LevelGenerator : MonoBehaviour {
 
     LevelText = GameObject.Find("LevelText").GetComponent<Text>();
   }
-  public void LoadOnClick()
-  {
-    if (State == GameState.Loading) {
-      State = GameState.InProgress;
-      StartCoroutine(PlayAnimation());
-      StartCoroutine(PlayGame());
-    }
-  }
 
-  private static IEnumerator PlayAnimation()
-  {
-    for (int i = 0; i < 500; i++)
-    {
+  private static IEnumerator PlayAnimation() {
+    for (int i = 0; i < 500; i++) {
       startButton.transform.Translate(Vector3.up);
-      logo.transform.Translate(Vector3.up); 
+      logo.transform.Translate(Vector3.up);
       yield return new WaitForSeconds(.01f);
 
     }
@@ -123,20 +129,27 @@ public class LevelGenerator : MonoBehaviour {
     }
   }
 
-  public void Retry(){
-  }
+  private static IEnumerator PlayGame(bool skipTutorial = false) {
+    //Remove all squirrels
+    GameObject[] Animals;
+    Animals = GameObject.FindGameObjectsWithTag("Animal");
+    foreach (GameObject animal in Animals) {
+      Destroy(animal);
+    }
 
-  private static IEnumerator PlayGame() {
+    //Reset enemy tracking
+    enemyDiedFlag = 0;
+
     State = GameState.InProgress;
-    InitLives(5);
-    yield return Level0();
+    InitLives();
+    if (!skipTutorial) yield return Level0();
     yield return Level1();
     yield return Level2();
     yield return Level3();
   }
 
-  private static void InitLives(int numLives) {
-    Lives = numLives;
+  private static void InitLives() {
+    Lives = 5;
     for (int i = 1; i <= Lives; i++) {
       //TODO: Replace with random selection from animals.
       Instantiate(Resources.Load("256px"), new Vector3(Random.Range(-4f, 4f), 2, 0), Quaternion.identity);
