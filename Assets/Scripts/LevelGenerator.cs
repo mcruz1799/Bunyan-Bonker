@@ -134,6 +134,9 @@ public class LevelGenerator : MonoBehaviour {
   }
 
   private static IEnumerator PlayGame(bool skipTutorial = false) {
+    gameover.SetActive(false);
+    youwin.SetActive(false);
+
     //Remove all squirrels
     GameObject[] Animals;
     Animals = GameObject.FindGameObjectsWithTag("Animal");

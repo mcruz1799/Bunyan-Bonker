@@ -11,7 +11,10 @@ public class Enemy : MonoBehaviour {
 
   protected virtual void Start() {
     GetComponent<TreeDamageable>().SetOnDeathBehavior(OnDeath);
-    if (transform.position.x > 0) speed = -speed;
+    if (transform.position.x > 0) {
+      speed = -speed;
+      transform.localScale = new Vector3(-1 * transform.localScale.x, transform.localScale.y, transform.localScale.z);
+    }
   }
 
   protected virtual void Update() {
