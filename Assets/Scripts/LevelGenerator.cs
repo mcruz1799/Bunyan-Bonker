@@ -39,6 +39,8 @@ public class LevelGenerator : MonoBehaviour {
 
   public static int Lives { get; private set; }
 
+  private bool menu = true;
+  private bool started = false;
 
 
   public static void RemoveLife() {
@@ -80,7 +82,7 @@ public class LevelGenerator : MonoBehaviour {
   }
 
   private void Start() {
-    StartCoroutine(PlayGame());
+    if (!menu) StartCoroutine(PlayGame());
   }
 
   private static void GameOver() {
