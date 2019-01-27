@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public GameController gameController;
+    public WigglyTree wigglyTree;
     public GameObject enemy;
 
     public static GameManager instance = null; //Allows GM to be accessed by other scripts.
@@ -14,7 +14,10 @@ public class GameManager : MonoBehaviour
     private static int lives = 6;
     private Text levelText;
     private Text instructionalText; //for tutorial
-    private int level = -1; //start menu as -1 tutorial as 0, etc.
+    public string instruction1 = "Press and hold the spacebar to wiggle!";
+    public string instruction2 = "The Bunyans are coming! Protect you and your furry friends!";
+    private int level = 0; //start menu as -1 tutorial as 0, etc.
+    private bool learning = true; 
 
     private void Awake()
     {
@@ -40,20 +43,26 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        addLives();
+        
     }
 
     // Update is called once per frame
     void Update()
     {   
-        if (level == 0){ //tutorial
-            bool learning = true;
-            if (learning){
-                if (Mathf.Abs(gameController.Angle) < 45.0f){
+        if (level == 1)
+        {
+            if (learning)
+            {
+                instructionalText = GameObject.Find("InstructionalText").GetComponent<Text>();
+                instructionalText.text = instruction1;
+                if (Mathf.Abs(wigglyTree.Angle) < 45.0f) 
+                {
                     learning = false;
+                    instructionalText.text = instruction2;
+                    enemy.SetActive(true);
                 }
             }
-            else enemy.SetActive(true); 
+            if (enemy == null) SceneManager.LoadScene(level+1);
         }
     }
 
@@ -67,13 +76,22 @@ public class GameManager : MonoBehaviour
         checkGameOver();
     }
     void OnLevelWasLoaded(int index)
-    {
+    {   
+        InitLevel(); 
         level++;
+        if (level == 2 || level == 3) addLives();
     }
     void InitLevel()
     {
-        levelText = GameObject.Find("LevelText").GetComponent<Text>();
-        levelText.text = "Day " + level;
+        if (level >= 0) 
+        {
+            levelText = GameObject.Find("LevelText").GetComponent<Text>();
+            levelText.text = "Day " + level;
+        }
+        if (level >= 1)
+        {
+            // instructionalText.gameObject.SetActive(false);
+        }
     }
     void checkGameOver()
     {
