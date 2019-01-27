@@ -45,9 +45,14 @@ public class LevelGenerator : MonoBehaviour {
   [SerializeField] private GameObject _startButton;
 
   [SerializeField] private GameObject _logo;
+  [SerializeField] private GameObject _gameover;
+
+  [SerializeField] private GameObject _youwin;
 
   private static GameObject startButton;
   private static GameObject logo;
+  private static GameObject gameover;
+  private static GameObject youwin;
 
   public static void RemoveLife() {
     Lives -= 1;
@@ -64,6 +69,7 @@ public class LevelGenerator : MonoBehaviour {
 
     if (Lives == 0) {
       State = GameState.GameOver;
+      SetActive(gameover);
     }
   }
 
@@ -86,6 +92,9 @@ public class LevelGenerator : MonoBehaviour {
 
     startButton = _startButton;
     logo = _logo;
+
+    gameover = _gameover;
+    youwin = _youwin;
 
     LevelText = GameObject.Find("LevelText").GetComponent<Text>();
   }
@@ -185,5 +194,6 @@ public class LevelGenerator : MonoBehaviour {
   private static IEnumerator Level3() {
     LevelText.text = "Day 3";
     yield return SpawnEnemies(Level3Enemies);
+    SetActive(youwin);
   }
 }
