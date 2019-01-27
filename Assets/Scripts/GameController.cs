@@ -30,30 +30,32 @@ namespace Hidden.WigglyTreeControls {
     private int switchesBeforeDragKicksIn = 2;
     private int xVelocityDirection = 0;
     private void Update() {
-      //Pull/release the tree by pushing/releasing the space bar
-      if (canPull && Input.GetKeyDown(KeyCode.Space)) {
-        bool startPullingSucceeded = treeController.StartPulling();
-        if (!startPullingSucceeded) {
-          //TODO: Play a sound to let the player know they can't pull yet
-        } else {
-          sideSwitchCounter = 0;
-          treeController.ToggleDrag(false);
-          StartCoroutine(PullCooldownRoutine(pullCooldownTime));
+      if (LevelGenerator.State == LevelGenerator.GameState.InProgress) {
+        //Pull/release the tree by pushing/releasing the space bar
+        if (canPull && Input.GetKeyDown(KeyCode.Space)) {
+          bool startPullingSucceeded = treeController.StartPulling();
+          if (!startPullingSucceeded) {
+            //TODO: Play a sound to let the player know they can't pull yet
+          } else {
+            sideSwitchCounter = 0;
+            treeController.ToggleDrag(false);
+            StartCoroutine(PullCooldownRoutine(pullCooldownTime));
+          }
         }
-      }
 
-      if (Input.GetKeyUp(KeyCode.Space)) {
-        treeController.StopPulling();
-      }
-
-      int newXVelocityDirection = System.Math.Sign(treeController.Speed);
-      if (newXVelocityDirection != xVelocityDirection && !treeController.IsBeingPulled && Mathf.Abs(treeController.Speed) >= 0.01f) {
-        if (sideSwitchCounter == switchesBeforeDragKicksIn) {
-          treeController.ToggleDrag(true);
+        if (Input.GetKeyUp(KeyCode.Space)) {
+          treeController.StopPulling();
         }
-        sideSwitchCounter += 1;
+
+        int newXVelocityDirection = System.Math.Sign(treeController.Speed);
+        if (newXVelocityDirection != xVelocityDirection && !treeController.IsBeingPulled && Mathf.Abs(treeController.Speed) >= 0.01f) {
+          if (sideSwitchCounter == switchesBeforeDragKicksIn) {
+            treeController.ToggleDrag(true);
+          }
+          sideSwitchCounter += 1;
+        }
+        xVelocityDirection = newXVelocityDirection;
       }
-      xVelocityDirection = newXVelocityDirection;
     }
 
     public bool UpgradePower() {

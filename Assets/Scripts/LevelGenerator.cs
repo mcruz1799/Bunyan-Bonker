@@ -44,7 +44,7 @@ public class LevelGenerator : MonoBehaviour {
   private static List<Enemy> Level2Enemies { get; set; }
   private static List<Enemy> Level3Enemies { get; set; }
 
-  public enum GameState { InProgress, GameOver }
+  public enum GameState { Loading, InProgress, GameOver }
 
   public static GameState State { get; private set; }
 
@@ -96,8 +96,10 @@ public class LevelGenerator : MonoBehaviour {
   }
   public void LoadOnClick()
   {
-    StartCoroutine(PlayAnimation());
-    StartCoroutine(PlayGame());
+    if (State == GameState.Loading) {
+      StartCoroutine(PlayAnimation());
+      StartCoroutine(PlayGame());
+    }
   }
 
   private static IEnumerator PlayAnimation()
