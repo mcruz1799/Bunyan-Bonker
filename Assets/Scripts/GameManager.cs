@@ -80,12 +80,9 @@ public class GameManager : MonoBehaviour
     void OnLevelWasLoaded(int index)
     {   
         InitLevel(); 
-<<<<<<< HEAD
         level++;
         if (level == 1 || level == 2) addLives();
-=======
-        if (level == 2 || level == 3) addLives();
->>>>>>> 62081a92aa542d037fbbfb1f428e6f86846cc9fd
+
     }
     void InitLevel()
     {
