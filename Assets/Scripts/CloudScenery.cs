@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CloudMotion : MonoBehaviour {
+public class CloudScenery : MonoBehaviour {
 
 #pragma warning disable 0649
   [SerializeField] private float speed;
   [SerializeField] private Vector3 leftEndpoint;
   [SerializeField] private Vector3 rightEndpoint;
+  [SerializeField] private List<Sprite> cloudSprites;
 #pragma warning restore 0649
 
   private IEnumerator MovementRoutine() {
     while (true) {
+      GetComponent<SpriteRenderer>().sprite = cloudSprites[Random.Range(0, cloudSprites.Count-1)];
+
       //Randomly pick left to right or right to left
       Vector3 start, destination;
       if (Random.Range(0, 1) == 0) {
