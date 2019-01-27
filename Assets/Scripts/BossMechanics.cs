@@ -17,7 +17,7 @@ public class BossMechanics : MonoBehaviour
     void Start()
     {
         startPos = transform.position;
-        GetComponent<TreeDamageable>().SetOnDeathBehavior(() => Destroy(gameObject));
+        GetComponent<TreeDamageable>().SetOnDeathBehavior(() => Win());
         speed = movGen;
         if(this.transform.position.x > 0) speed = -speed;
         this.GetComponent<TreeDamageable>().AddOnDamagedListener(GetHit);
@@ -73,7 +73,13 @@ public class BossMechanics : MonoBehaviour
         yield return new WaitForSeconds(0);
     }
 
-    //TODO: when boss dies, you win screen
+    void Win(){
+        //do win UI stuff
+        Debug.Log("YOU WON");
+        Destroy(gameObject);
+    }
+
+    //when boss dies, you win screen
     //when tree hits boss, switch sides + up speed
     //when boss hits tree, switch sides
 }
