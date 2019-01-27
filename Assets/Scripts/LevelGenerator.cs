@@ -24,6 +24,10 @@ public class LevelGenerator : MonoBehaviour {
   private static List<Enemy> Level2Enemies { get; set; }
   private static List<Enemy> Level3Enemies { get; set; }
 
+  public enum GameState { InProgress, GameOver }
+
+  public static GameState State { get; private set; }
+
   public static int Lives { get; private set; }
 
   public static void RemoveLife() {
@@ -32,11 +36,15 @@ public class LevelGenerator : MonoBehaviour {
     GameObject[] Animals;
     Animals = GameObject.FindGameObjectsWithTag("Animal");
     if (Animals.Length == 0) {
-      Debug.Log("All the animals have already left. :(");
+      Debug.LogError("All the animals have already left. :(");
     } else {
       int index = Random.Range(0, Animals.Length);
       GameObject animal = Animals[index];
       Destroy(animal);
+    }
+
+    if (Lives == 0) {
+      State = GameState.GameOver;
     }
   }
 
@@ -59,29 +67,17 @@ public class LevelGenerator : MonoBehaviour {
     StartCoroutine(PlayGame());
   }
 
+  private static void GameOver() {
+
+  }
+
   private static IEnumerator PlayGame() {
+    State = GameState.InProgress;
     InitLives(5);
     yield return Level0();
     yield return Level1();
     yield return Level2();
     yield return Level3();
-  }
-
-  private static IEnumerator Level0() {
-    yield return new WaitUntil(() => Mathf.Abs(WigglyTree.Angle) > 45f);
-    yield return SpawnEnemies(new List<Enemy>() { Level0Enemy });
-  }
-
-  private static IEnumerator Level1() {
-    yield return SpawnEnemies(Level1Enemies);
-  }
-
-  private static IEnumerator Level2() {
-    yield return SpawnEnemies(Level2Enemies);
-  }
-
-  private static IEnumerator Level3() {
-    yield return SpawnEnemies(Level3Enemies);
   }
 
   private static void InitLives(int numLives) {
@@ -109,5 +105,22 @@ public class LevelGenerator : MonoBehaviour {
       yield return new WaitUntil(() => enemyDiedFlag);
       enemyDiedFlag = false;
     }
+  }
+
+  private static IEnumerator Level0() {
+    yield return new WaitUntil(() => Mathf.Abs(WigglyTree.Angle) > 45f);
+    yield return SpawnEnemies(new List<Enemy>() { Level0Enemy });
+  }
+
+  private static IEnumerator Level1() {
+    yield return SpawnEnemies(Level1Enemies);
+  }
+
+  private static IEnumerator Level2() {
+    yield return SpawnEnemies(Level2Enemies);
+  }
+
+  private static IEnumerator Level3() {
+    yield return SpawnEnemies(Level3Enemies);
   }
 }
