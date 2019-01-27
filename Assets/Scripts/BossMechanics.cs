@@ -36,6 +36,8 @@ public class BossMechanics : Enemy {
 
   public void SwitchSides() {
     //move to opposite side [animation?]
+    SpriteRenderer sprite = GetComponentInChildren<SpriteRenderer>();
+    sprite.flipX = !sprite.flipX;
     Instantiate(poofFX, transform.position, transform.rotation);
     StartCoroutine(moveAway());
   }
