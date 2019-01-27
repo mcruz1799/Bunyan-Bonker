@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1594449160331678, guid: 86bf5ea41080346548038b8102b367d0, type: 3}
       propertyPath: m_Name
-      value: VfxLightningBolts
+      value: VfxLightningBolts Variant
       objectReference: {fileID: 0}
     - target: {fileID: 198931277014333668, guid: 86bf5ea41080346548038b8102b367d0,
         type: 3}
@@ -187,6 +187,11 @@ PrefabInstance:
       propertyPath: SubModule.subEmitters.Array.data[1].emitter
       value: 
       objectReference: {fileID: 5456783333152307883}
+    - target: {fileID: 198952140268421598, guid: 86bf5ea41080346548038b8102b367d0,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 198650478005094412, guid: 86bf5ea41080346548038b8102b367d0,
         type: 3}
       propertyPath: SubModule.subEmitters.Array.data[0].emitter
