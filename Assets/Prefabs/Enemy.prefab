@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f78acbc954afb474ea1a6a74ef6e5baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movGen: 0.08
+  movGen: 0.02
   movLum: 0.05
 --- !u!54 &5152610560396058894
 Rigidbody:

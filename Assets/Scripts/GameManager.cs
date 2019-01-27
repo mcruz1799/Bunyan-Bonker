@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public WigglyTree wigglyTree;
     public GameObject enemy;
+    public AudioClip healthWarning;
 
     public static GameManager instance = null; //Allows GM to be accessed by other scripts.
 
@@ -16,11 +17,16 @@ public class GameManager : MonoBehaviour
     private Text instructionalText; //for tutorial
     public string instruction1 = "Press and hold the spacebar to wiggle!";
     public string instruction2 = "The Bunyans are coming! Protect you and your furry friends!";
-    private int level = 0; //start menu as -1 tutorial as 0, etc.
+<<<<<<< HEAD
+    private int level; //start menu as -1 tutorial as 0, etc.
+=======
+    private int level = -1; //start menu as -1 tutorial as 0, etc.
+>>>>>>> parent of 08b8eef... GameManager transitions gah
     private bool learning = true; 
 
     private void Awake()
-    {
+    {   
+        level = SceneManager.GetActiveScene().buildIndex - 1;
         //Check if instance already exists
         if (instance == null)
 
@@ -43,26 +49,29 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        addLives();
     }
 
     // Update is called once per frame
     void Update()
     {   
-        if (level == 1)
+<<<<<<< HEAD
+        if (level == 0)
         {
             if (learning)
+=======
+        if (level == 0 && learning)
+        { //tutorial
+            instructionalText = GameObject.Find("InstructionalText").GetComponent<Text>();
+            instructionalText.text = instruction1;
+            if (Mathf.Abs(wigglyTree.Angle) < 45.0f) 
+>>>>>>> parent of 08b8eef... GameManager transitions gah
             {
-                instructionalText = GameObject.Find("InstructionalText").GetComponent<Text>();
-                instructionalText.text = instruction1;
-                if (Mathf.Abs(wigglyTree.Angle) < 45.0f) 
-                {
-                    learning = false;
-                    instructionalText.text = instruction2;
-                    enemy.SetActive(true);
-                }
+                learning = false;
+                instructionalText.text = instruction2;
+                enemy.SetActive(true);
             }
-            if (enemy == null) SceneManager.LoadScene(level+1);
+             
         }
     }
 
@@ -78,11 +87,21 @@ public class GameManager : MonoBehaviour
     void OnLevelWasLoaded(int index)
     {   
         InitLevel(); 
-        level++;
+<<<<<<< HEAD
+<<<<<<< HEAD
         if (level == 2 || level == 3) addLives();
+=======
+        level++;
+>>>>>>> parent of 08b8eef... GameManager transitions gah
+=======
+        level++;
+        if (level == 1 || level == 2) addLives();
+
+>>>>>>> 15756ccd6453536bc00c2e774a52383d43d25009
     }
     void InitLevel()
     {
+        Debug.Log("Init: " + level);
         if (level >= 0) 
         {
             levelText = GameObject.Find("LevelText").GetComponent<Text>();
@@ -95,6 +114,10 @@ public class GameManager : MonoBehaviour
     }
     void checkGameOver()
     {
+        if (lives == 1 || lives == 3)
+        {
+            SoundManager.Instance.Play(healthWarning);
+        }
         if (lives <= 0)
         {
             //TODO: Replace with Game Over State.
@@ -108,6 +131,13 @@ public class GameManager : MonoBehaviour
             #endif
         }
     }
+<<<<<<< HEAD
+    void GameOver()
+    {
+        levelText.text = "The Bunyans chopped you down!";
+    }
+=======
+>>>>>>> 85bf66f2855c332355103d2fc4c3f0c63f374017
 
     void GameOver()
     {
