@@ -9,6 +9,11 @@ public class LevelGenerator : MonoBehaviour {
   [SerializeField] private Text _levelText;
   [SerializeField] private Text _instructionalText;
 
+  [SerializeField] private GameObject _startButton;
+  [SerializeField] private GameObject _logo;
+  [SerializeField] private GameObject _gameover;
+  [SerializeField] private GameObject _youwin;
+
   [SerializeField] private WigglyTree _wigglyTree;
   [SerializeField] private Vector3 _leftSpawnPosition;
   [SerializeField] private Vector3 _rightSpawnPosition;
@@ -25,6 +30,11 @@ public class LevelGenerator : MonoBehaviour {
   private static string instruction1 = "Press and hold the spacebar to wiggle!";
   private static string instruction2 = "The Bunyans are coming! Protect you and your furry friends!";
 
+  private static GameObject startButton { get; set; }
+  private static GameObject logo { get; set; }
+  private static GameObject gameover { get; set; }
+  private static GameObject youwin { get; set; }
+
   private static WigglyTree WigglyTree { get; set; }
   private static Vector3 LeftSpawnPosition { get; set; }
   private static Vector3 RightSpawnPosition { get; set; }
@@ -39,20 +49,6 @@ public class LevelGenerator : MonoBehaviour {
   public static GameState State { get; private set; }
 
   public static int Lives { get; private set; }
-
-  // private bool menu = true;
-  // private bool started = false;
-  [SerializeField] private GameObject _startButton;
-
-  [SerializeField] private GameObject _logo;
-  [SerializeField] private GameObject _gameover;
-
-  [SerializeField] private GameObject _youwin;
-
-  private static GameObject startButton;
-  private static GameObject logo;
-  private static GameObject gameover;
-  private static GameObject youwin;
 
   public static void RemoveLife() {
     Lives -= 1;
@@ -74,7 +70,7 @@ public class LevelGenerator : MonoBehaviour {
   }
 
   public static void NotifyEnemyDied() {
-    enemyDiedFlag = true;
+    enemyDiedFlag += 1;
   }
 
   private void Awake() {
@@ -150,13 +146,13 @@ public class LevelGenerator : MonoBehaviour {
     }
   }
 
-  private static bool enemyDiedFlag = false;
+  private static int enemyDiedFlag = 0;
   private static IEnumerator SpawnEnemies(List<Enemy> enemyPrefabs) {
     foreach (Enemy enemy in enemyPrefabs) {
       yield return new WaitForSeconds(Random.Range(3, 7));
       GameObject newEnemy = Instantiate(enemy.gameObject);
 
-      if (Random.Range(0, 1) == 0) {
+      if (Random.Range(0, 2) == 0) {
         newEnemy.transform.position = LeftSpawnPosition;
       } else {
         newEnemy.transform.position = RightSpawnPosition;
@@ -164,8 +160,8 @@ public class LevelGenerator : MonoBehaviour {
     }
 
     for (int i = 0; i < enemyPrefabs.Count; i++) {
-      yield return new WaitUntil(() => enemyDiedFlag);
-      enemyDiedFlag = false;
+      yield return new WaitUntil(() => enemyDiedFlag > 0);
+      enemyDiedFlag -= 1;
     }
   }
 

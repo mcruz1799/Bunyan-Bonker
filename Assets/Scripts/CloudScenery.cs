@@ -11,13 +11,17 @@ public class CloudScenery : MonoBehaviour {
   [SerializeField] private List<Sprite> cloudSprites;
 #pragma warning restore 0649
 
+  private void Start() {
+    StartCoroutine(MovementRoutine());
+  }
+
   private IEnumerator MovementRoutine() {
     while (true) {
-      GetComponent<SpriteRenderer>().sprite = cloudSprites[Random.Range(0, cloudSprites.Count-1)];
+      GetComponent<SpriteRenderer>().sprite = cloudSprites[Random.Range(0, cloudSprites.Count)];
 
       //Randomly pick left to right or right to left
       Vector3 start, destination;
-      if (Random.Range(0, 1) == 0) {
+      if (Random.Range(0, 2) == 0) {
         start = leftEndpoint;
         destination = rightEndpoint;
       } else {
@@ -25,9 +29,10 @@ public class CloudScenery : MonoBehaviour {
         destination = leftEndpoint;
       }
 
-      float adjustedSpeed = speed * Random.Range(0.9f, 1.1f);
-
       transform.position = start;
+      yield return new WaitForSeconds(Random.Range(1f, 5f));
+
+      float adjustedSpeed = speed * Random.Range(0.9f, 1.1f);
       Vector3 directionVector = (destination - start).normalized;
       while ((transform.position - destination).sqrMagnitude > 0.1f) {
         transform.Translate(directionVector * adjustedSpeed * Time.deltaTime, Space.Self);
