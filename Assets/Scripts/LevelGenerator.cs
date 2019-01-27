@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class LevelGenerator : MonoBehaviour {
 #pragma warning disable 0649
+  [SerializeField] private Text _levelText;
+  [SerializeField] private Text _instructionalText;
+
   [SerializeField] private WigglyTree _wigglyTree;
   [SerializeField] private Vector3 _leftSpawnPosition;
   [SerializeField] private Vector3 _rightSpawnPosition;
@@ -15,6 +18,11 @@ public class LevelGenerator : MonoBehaviour {
   [SerializeField] private List<Enemy> _level2Enemies;
   [SerializeField] private List<Enemy> _level3Enemies;
 #pragma warning restore 0649
+
+  private static Text LevelText { get; set; }
+  private static Text InstructionalText { get; set; }
+  private static string instruction1 = "Press and hold the spacebar to wiggle!";
+  private static string instruction2 = "The Bunyans are coming! Protect you and your furry friends!";
 
   private static WigglyTree WigglyTree { get; set; }
   private static Vector3 LeftSpawnPosition { get; set; }
@@ -30,13 +38,6 @@ public class LevelGenerator : MonoBehaviour {
   public static GameState State { get; private set; }
 
   public static int Lives { get; private set; }
-  [SerializeField] private Text _levelText;
-  [SerializeField] private Text _instructionalText;
-
-  private static Text levelText { get; set; }
-  private static Text instructionalText { get; set; }
-  private static string instruction1 = "Press and hold the spacebar to wiggle!";
-  private static string instruction2 = "The Bunyans are coming! Protect you and your furry friends!";
 
 
 
@@ -72,10 +73,10 @@ public class LevelGenerator : MonoBehaviour {
     Level2Enemies = _level2Enemies;
     Level3Enemies = _level3Enemies;
 
-    levelText = _levelText;
-    instructionalText = _instructionalText;
+    LevelText = _levelText;
+    InstructionalText = _instructionalText;
 
-    levelText = GameObject.Find("LevelText").GetComponent<Text>();
+    LevelText = GameObject.Find("LevelText").GetComponent<Text>();
   }
 
   private void Start() {
@@ -123,33 +124,29 @@ public class LevelGenerator : MonoBehaviour {
   }
 
   private static IEnumerator Level0() {
-    levelText.text = "Day 0";
-    instructionalText.text = instruction1;
+    LevelText.text = "Day 0";
+    InstructionalText.text = instruction1;
 
-    Debug.Log("Starting level 0.  Wiggle the tree enough, and an enemy will spawn.  Then, kill it to proceed.");
     yield return new WaitUntil(() => Mathf.Abs(WigglyTree.Angle) > 45f);
 
-    instructionalText.text = instruction2;
+    InstructionalText.text = instruction2;
     yield return SpawnEnemies(new List<Enemy>() { Level0Enemy });
   }
 
   private static IEnumerator Level1() {
-    instructionalText.text = "";
+    InstructionalText.text = "";
 
-    levelText.text = "Day 1";
-    Debug.Log("Starting level 1");
+    LevelText.text = "Day 1";
     yield return SpawnEnemies(Level1Enemies);
   }
 
   private static IEnumerator Level2() {
-    levelText.text = "Day 2";
-    Debug.Log("Starting level 2");
+    LevelText.text = "Day 2";
     yield return SpawnEnemies(Level2Enemies);
   }
 
   private static IEnumerator Level3() {
-    levelText.text = "Day 3";
-    Debug.Log("Starting level 3");
+    LevelText.text = "Day 3";
     yield return SpawnEnemies(Level3Enemies);
   }
 }
