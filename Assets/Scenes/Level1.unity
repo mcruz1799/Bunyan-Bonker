@@ -422,7 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 124bbba9cc344bb46bf1190a5e69d45a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wigglyTree: {fileID: 0}
+  wigglyTree: {fileID: 1379318173}
   enemy: {fileID: 0}
   healthWarning: {fileID: 8300000, guid: 21690062b9ec36d47b356f6f05b292de, type: 3}
   instruction1: Press and hold the spacebar to wiggle!
@@ -1047,6 +1047,18 @@ PrefabInstance:
       objectReference: {fileID: 1115954017}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02ceca8156b5f974d82079acfd504d66, type: 3}
+--- !u!114 &1379318173 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5166077992546413582, guid: 02ceca8156b5f974d82079acfd504d66,
+    type: 3}
+  m_PrefabInstance: {fileID: 1379318172}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115954015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c3ca6ec12eaac24ead6987f9f3ed879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1684704744
 GameObject:
   m_ObjectHideFlags: 0
