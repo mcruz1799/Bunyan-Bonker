@@ -17,11 +17,7 @@ public class GameManager : MonoBehaviour
     private Text instructionalText; //for tutorial
     public string instruction1 = "Press and hold the spacebar to wiggle!";
     public string instruction2 = "The Bunyans are coming! Protect you and your furry friends!";
-<<<<<<< HEAD
-    private int level; //start menu as -1 tutorial as 0, etc.
-=======
     private int level = -1; //start menu as -1 tutorial as 0, etc.
->>>>>>> parent of 08b8eef... GameManager transitions gah
     private bool learning = true; 
 
     private void Awake()
@@ -87,17 +83,8 @@ public class GameManager : MonoBehaviour
     void OnLevelWasLoaded(int index)
     {   
         InitLevel(); 
-<<<<<<< HEAD
-<<<<<<< HEAD
         if (level == 2 || level == 3) addLives();
-=======
         level++;
->>>>>>> parent of 08b8eef... GameManager transitions gah
-=======
-        level++;
-        if (level == 1 || level == 2) addLives();
-
->>>>>>> 15756ccd6453536bc00c2e774a52383d43d25009
     }
     void InitLevel()
     {
@@ -131,13 +118,6 @@ public class GameManager : MonoBehaviour
             #endif
         }
     }
-<<<<<<< HEAD
-    void GameOver()
-    {
-        levelText.text = "The Bunyans chopped you down!";
-    }
-=======
->>>>>>> 85bf66f2855c332355103d2fc4c3f0c63f374017
 
     void GameOver()
     {
