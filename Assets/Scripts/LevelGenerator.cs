@@ -108,19 +108,23 @@ public class LevelGenerator : MonoBehaviour {
   }
 
   private static IEnumerator Level0() {
+    Debug.Log("Starting level 0.  Wiggle the tree enough, and an enemy will spawn.  Then, kill it to proceed.");
     yield return new WaitUntil(() => Mathf.Abs(WigglyTree.Angle) > 45f);
     yield return SpawnEnemies(new List<Enemy>() { Level0Enemy });
   }
 
   private static IEnumerator Level1() {
+    Debug.Log("Starting level 1");
     yield return SpawnEnemies(Level1Enemies);
   }
 
   private static IEnumerator Level2() {
+    Debug.Log("Starting level 2");
     yield return SpawnEnemies(Level2Enemies);
   }
 
   private static IEnumerator Level3() {
+    Debug.Log("Starting level 3");
     yield return SpawnEnemies(Level3Enemies);
   }
 }
