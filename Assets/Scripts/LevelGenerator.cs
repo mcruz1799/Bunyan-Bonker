@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Animations;
 
 public class LevelGenerator : MonoBehaviour {
 #pragma warning disable 0649
   [SerializeField] private Text _levelText;
   [SerializeField] private Text _instructionalText;
+
+  [SerializeField] private GameObject _startButton;
+  [SerializeField] private GameObject _logo;
+  [SerializeField] private GameObject _gameover;
+  [SerializeField] private GameObject _youwin;
 
   [SerializeField] private WigglyTree _wigglyTree;
   [SerializeField] private Vector3 _leftSpawnPosition;
@@ -24,6 +30,11 @@ public class LevelGenerator : MonoBehaviour {
   private static string instruction1 = "Press and hold the spacebar to wiggle!";
   private static string instruction2 = "The Bunyans are coming! Protect you and your furry friends!";
 
+  private static GameObject startButton { get; set; }
+  private static GameObject logo { get; set; }
+  private static GameObject gameover { get; set; }
+  private static GameObject youwin { get; set; }
+
   private static WigglyTree WigglyTree { get; set; }
   private static Vector3 LeftSpawnPosition { get; set; }
   private static Vector3 RightSpawnPosition { get; set; }
@@ -38,10 +49,6 @@ public class LevelGenerator : MonoBehaviour {
   public static GameState State { get; private set; }
 
   public static int Lives { get; private set; }
-
-  private bool menu = true;
-  private bool started = false;
-
 
   public static void RemoveLife() {
     Lives -= 1;
@@ -58,11 +65,12 @@ public class LevelGenerator : MonoBehaviour {
 
     if (Lives == 0) {
       State = GameState.GameOver;
+      gameover.SetActive(true);
     }
   }
 
   public static void NotifyEnemyDied() {
-    enemyDiedFlag = true;
+    enemyDiedFlag += 1;
   }
 
   private void Awake() {
@@ -78,15 +86,47 @@ public class LevelGenerator : MonoBehaviour {
     LevelText = _levelText;
     InstructionalText = _instructionalText;
 
+    startButton = _startButton;
+    logo = _logo;
+
+    gameover = _gameover;
+    youwin = _youwin;
+
     LevelText = GameObject.Find("LevelText").GetComponent<Text>();
   }
+  public void LoadOnClick()
+  {
+    StartCoroutine(PlayAnimation());
+    StartCoroutine(PlayGame());
+  }
 
-  private void Start() {
-    if (!menu) StartCoroutine(PlayGame());
+  private static IEnumerator PlayAnimation()
+  {
+    for (int i = 0; i < 500; i++)
+    {
+      startButton.transform.Translate(Vector3.up);
+      logo.transform.Translate(Vector3.up); 
+      yield return new WaitForSeconds(.01f);
+
+    }
   }
 
   private static void GameOver() {
-    //TODO
+    //TODO:
+    Debug.Log("Game Over");
+  }
+
+  private static void Win() {
+    //TODO:
+    Debug.Log("You Win");
+  }
+
+  public void Retry(){
+    GameOver();
+  }
+
+  public void Replay(){
+    Win();
   }
 
   private static IEnumerator PlayGame() {
@@ -106,13 +146,13 @@ public class LevelGenerator : MonoBehaviour {
     }
   }
 
-  private static bool enemyDiedFlag = false;
+  private static int enemyDiedFlag = 0;
   private static IEnumerator SpawnEnemies(List<Enemy> enemyPrefabs) {
     foreach (Enemy enemy in enemyPrefabs) {
       yield return new WaitForSeconds(Random.Range(3, 7));
       GameObject newEnemy = Instantiate(enemy.gameObject);
 
-      if (Random.Range(0, 1) == 0) {
+      if (Random.Range(0, 2) == 0) {
         newEnemy.transform.position = LeftSpawnPosition;
       } else {
         newEnemy.transform.position = RightSpawnPosition;
@@ -120,8 +160,8 @@ public class LevelGenerator : MonoBehaviour {
     }
 
     for (int i = 0; i < enemyPrefabs.Count; i++) {
-      yield return new WaitUntil(() => enemyDiedFlag);
-      enemyDiedFlag = false;
+      yield return new WaitUntil(() => enemyDiedFlag > 0);
+      enemyDiedFlag -= 1;
     }
   }
 
@@ -150,5 +190,6 @@ public class LevelGenerator : MonoBehaviour {
   private static IEnumerator Level3() {
     LevelText.text = "Day 3";
     yield return SpawnEnemies(Level3Enemies);
+    youwin.SetActive(true);
   }
 }
