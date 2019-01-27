@@ -263,6 +263,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74fc9b21562744b44900acb115544e7d, type: 3}
+--- !u!114 &227448903 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6700424052815508618, guid: 74fc9b21562744b44900acb115544e7d,
+    type: 3}
+  m_PrefabInstance: {fileID: 227448902}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c3ca6ec12eaac24ead6987f9f3ed879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &478439650
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,9 +518,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 124bbba9cc344bb46bf1190a5e69d45a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wigglyTree: {fileID: 0}
+  wigglyTree: {fileID: 227448903}
   enemy: {fileID: 2071008413}
-  healthWarning: {fileID: 0}
   instruction1: Press and hold the spacebar to wiggle!
   instruction2: The Bunyans are coming! Protect you and your furry friends!
 --- !u!4 &706249691
