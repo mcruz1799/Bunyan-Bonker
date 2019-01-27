@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public WigglyTree wigglyTree;
     public GameObject enemy;
+    public AudioClip healthWarning;
 
     public static GameManager instance = null; //Allows GM to be accessed by other scripts.
 
@@ -43,7 +44,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        addLives();
     }
 
     // Update is called once per frame
@@ -79,7 +80,7 @@ public class GameManager : MonoBehaviour
     {   
         InitLevel(); 
         level++;
-        if (level == 2 || level == 3) addLives();
+        if (level == 1 || level == 2) addLives();
     }
     void InitLevel()
     {
@@ -95,6 +96,10 @@ public class GameManager : MonoBehaviour
     }
     void checkGameOver()
     {
+        if (lives == 1 || lives == 3)
+        {
+            SoundManager.Instance.Play(healthWarning);
+        }
         if (lives <= 0)
         {
             //TODO: Replace with Game Over State.
