@@ -9,6 +9,10 @@ namespace Hidden.WigglyTreeControls {
     [SerializeField] private float pullTime; //Seconds
 #pragma warning restore 0649
 
+    public AudioSource TreeFxSource;
+    public AudioClip stretch1;
+    public AudioClip Stretch2;
+
     //[Denominator] frames per second
     private float angleChangeTimeIncrement = 1f / 60f;
 
@@ -50,7 +54,8 @@ namespace Hidden.WigglyTreeControls {
         Debug.LogError("Attempted to pull slingshot, but it's already being pulled");
         return false;
       }
-
+      TreeFxSource.clip = stretch1;
+      TreeFxSource.Play();
       IsBeingPulled = true;
       treeSlingshot.PauseAndResetMomentum(true);
 
@@ -88,7 +93,7 @@ namespace Hidden.WigglyTreeControls {
       if (!IsBeingPulled) {
         return false;
       }
-
+      TreeFxSource.Stop();
       IsBeingPulled = false;
       treeSlingshot.PauseAndResetMomentum(false);
       return true;
