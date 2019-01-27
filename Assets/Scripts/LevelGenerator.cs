@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Animations;
 
 public class LevelGenerator : MonoBehaviour {
 #pragma warning disable 0649
@@ -39,9 +40,14 @@ public class LevelGenerator : MonoBehaviour {
 
   public static int Lives { get; private set; }
 
-  private bool menu = true;
-  private bool started = false;
+  // private bool menu = true;
+  // private bool started = false;
+  [SerializeField] private GameObject _startButton;
 
+  [SerializeField] private GameObject _logo;
+
+  private static GameObject startButton;
+  private static GameObject logo;
 
   public static void RemoveLife() {
     Lives -= 1;
@@ -78,11 +84,26 @@ public class LevelGenerator : MonoBehaviour {
     LevelText = _levelText;
     InstructionalText = _instructionalText;
 
+    startButton = _startButton;
+    logo = _logo;
+
     LevelText = GameObject.Find("LevelText").GetComponent<Text>();
   }
+  public void LoadOnClick()
+  {
+    StartCoroutine(PlayAnimation());
+    StartCoroutine(PlayGame());
+  }
 
-  private void Start() {
-    if (!menu) StartCoroutine(PlayGame());
+  private static IEnumerator PlayAnimation()
+  {
+    for (int i = 0; i < 500; i++)
+    {
+      startButton.transform.Translate(Vector3.up);
+      logo.transform.Translate(Vector3.up); 
+      yield return new WaitForSeconds(.01f);
+
+    }
   }
 
   private static void GameOver() {
