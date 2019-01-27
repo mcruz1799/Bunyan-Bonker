@@ -86,12 +86,21 @@ public class LevelGenerator : MonoBehaviour {
   }
 
   private static void GameOver() {
-    //TODO
+    //TODO:
     Debug.Log("Game Over");
   }
 
-  public void Replay(){
+  private static void Win() {
+    //TODO:
+    Debug.Log("You Win");
+  }
+
+  public void Retry(){
     GameOver();
+  }
+
+  public void Replay(){
+    Win();
   }
 
   private static IEnumerator PlayGame() {
