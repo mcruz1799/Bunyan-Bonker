@@ -16,11 +16,12 @@ public class GameManager : MonoBehaviour
     private Text instructionalText; //for tutorial
     public string instruction1 = "Press and hold the spacebar to wiggle!";
     public string instruction2 = "The Bunyans are coming! Protect you and your furry friends!";
-    private int level = 0; //start menu as -1 tutorial as 0, etc.
+    private int level; //start menu as -1 tutorial as 0, etc.
     private bool learning = true; 
 
     private void Awake()
-    {
+    {   
+        level = SceneManager.GetActiveScene().buildIndex - 1;
         //Check if instance already exists
         if (instance == null)
 
@@ -49,7 +50,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        if (level == 1)
+        if (level == 0)
         {
             if (learning)
             {
@@ -78,11 +79,11 @@ public class GameManager : MonoBehaviour
     void OnLevelWasLoaded(int index)
     {   
         InitLevel(); 
-        level++;
         if (level == 2 || level == 3) addLives();
     }
     void InitLevel()
     {
+        Debug.Log("Init: " + level);
         if (level >= 0) 
         {
             levelText = GameObject.Find("LevelText").GetComponent<Text>();
